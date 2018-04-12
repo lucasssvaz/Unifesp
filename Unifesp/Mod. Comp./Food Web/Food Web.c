@@ -43,7 +43,7 @@ int main()
   fprintf(file_ptr,"#    Time       |        Grass        |       Rabbit       |        Insect        |        Lizard        |        Cobra        |        Bird        #\n");
   fprintf(file_ptr,"   %f         %.10f          %.10f           %.10f             %.10f             %.10f           %.10f   \n",Time,Population[Grass],Population[Rabbit],Population[Insect],Population[Lizard],Population[Cobra],Population[Bird]);
 
-  while (Time<1000*52){
+  while (Time<100*52){
     DeltaPop[Grass] = (Coef[Grass][Grass]*Population[Grass]*(1-(1.0*Population[Grass]/K)+(Coef[Grass][Rabbit]*Population[Rabbit])+(Coef[Grass][Insect]*Population[Insect])))*DELTA_T;
 
     DeltaPop[Rabbit] = (Population[Rabbit]*((Coef[Rabbit][Grass]*Population[Grass])+(Coef[Rabbit][Rabbit])+(Coef[Rabbit][Cobra]*Population[Cobra])+(Coef[Rabbit][Insect]*Population[Insect])))*DELTA_T;
