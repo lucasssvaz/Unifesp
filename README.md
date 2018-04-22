@@ -1,6 +1,6 @@
 # Unifesp Files
 
-In this repository there are most of the files that I created and/or used during my Computer Engieneering degree. Most of the files are in C, feel free to use them as you wish (according to the license).
+This repository contains most of the files that I created and/or used during my Computer Engieneering degree at the Federal University of São Paulo. Most of the files are in C, feel free to use them as you wish (according to the license).
 
 ## Author
 
