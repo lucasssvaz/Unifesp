@@ -7,7 +7,7 @@ int main()
   FILE* file_regular = fopen("G_Regular.dat", "w");
   FILE* file_random = fopen("G_Random.dat", "w");
   FILE* file_barabasi = fopen("G_Barabasi.dat", "w");
-  int i,j, Regular[500][500], Random[500][500], Barabasi[500][500], *Barabasi_Edges, nEdges_Nodes=2, a, b;
+  int i,j, Regular[500][500], Random[500][500], Barabasi[500][500], *Barabasi_Edges, nEdges_Nodes=2, a;
 
   srand((unsigned)time(NULL));
 
