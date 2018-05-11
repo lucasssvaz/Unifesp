@@ -333,42 +333,56 @@ void Tree_Builder(Tree *Queue, char *String){
 	return;
 }
 
-void Tree_Remove(Tree *Queue, Node *Search){
-	Node *Aux;
+void Tree_Remove(Tree *Queue, Node *Rem){
+	Node *Father, *Sub, *Sib;
 
-    if (Search->Left == NULL){
-        Aux = Search->Father;
-        if (Aux->Left == Search){
-        	Aux->Left = Search->Right;
-        	Aux->Left->Father = Aux;
-        	free(Search);
+
+    if (Rem->Left == NULL){
+        Father = Rem->Father;
+        Sub = Rem->Right;
+        if (Father->Left == Rem){
+        	Father->Left = Rem->Right;
+        	Father->Left->Father = Father;
+        	free(Rem);
         	return;
         } else {
-        	Aux->Right = Search->Right;
-        	Aux->Right->Father = Aux;
-        	free(Search);
+        	Father->Right = Rem->Right;
+        	Father->Right->Father = Father;
+        	free(Rem);
         	return;
         }
 
     }
-    else if (Search->Right == NULL){
-        Aux = Search->Father;
-        if (Aux->Left == Search){
-        	Aux->Left = Search->Left;
-        	Aux->Left->Father = Aux;
-        	free(Search);
-        	return;
+    else if (Rem->Right == NULL){
+    	if (Father)
+        Father = Rem->Father;
+        Sub = Rem->Left;
+        if (Sub!=NULL){
+        	if (Sub->Colour==1 || Rem->Colour==1){
+        		if (Father->Left == Rem){
+        			Sub->Colour=0;
+        			Father->Left = Rem->Left;
+        			Father->Left->Father = Father;
+        			free(Rem);
+        			return;
+        		} else {
+        			Sub->Colour=0;
+        			Father->Right = Rem->Left;
+        			Father->Right->Father = Father;
+        			free(Rem);
+        			return;
+        		}
+        	}else {
+
+        	}	
         } else {
-        	Aux->Right = Search->Left;
-        	Aux->Right->Father = Aux;
-        	free(Search);
-        	return;
+
         }
     }
 
-    Aux = NodeSuc(Search->Right);
-    Search->Id = Aux->Id;
-    Tree_Remove(Queue,Aux);
+    Father = NodeSuc(Rem->Right);
+    Rem->Id = Father->Id;
+    Tree_Remove(Queue,Father);
 
     return;
 }

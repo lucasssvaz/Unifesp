@@ -1,12 +1,13 @@
 #include <stdio.h>
 #include <math.h>
 #include <stdlib.h>
+#include <time.h>
 
 typedef struct {
 	float x,y,S,act;
 }Neuron;
 
-#define FILE_NAME "plot.dat"
+#define FILE_NAME "plot_Regular.dat"
 #define DELTA_T 0.01
 
 int main()
@@ -14,11 +15,11 @@ int main()
   FILE* file_output = fopen(FILE_NAME, "w");
   FILE* file_input = fopen("G_Regular.dat", "r");
   float Time=0;
-  int i, j, Matrix[500][500];
-  Neuron *Network = (Neuron *)calloc(500*sizeof(Neuron));
+  int i, j, Matrix[500][500], H;
+  Neuron *Network = (Neuron *)calloc(500,sizeof(Neuron));
   char CallPlot[1000];
 
-  //float x = ((float)rand()/(float)(RAND_MAX)) * a;
+  srand((unsigned)time(NULL));
 
   for(i=0; i < 500; i++){
     for(j = 0; j < 500; j++) {
@@ -29,23 +30,52 @@ int main()
   }
 
   fprintf(file_output,"#                                           Neuron                                          #\n");
+  //fprintf(file_output,"Time ");
 
   for (i=0;i<500;i++){
-  	Network[i].x=(((float)rand()/(float)(RAND_MAX)) * 4)-2;
-  	Network[i].y=((float)rand()/(float)(RAND_MAX)) * 4;
+  	Network[i].x=(1.0*(rand()%1000001)/1000000)*4 - 2;
+  	Network[i].y=(1.0*(rand()%1000001)/1000000)*4;
   	Network[i].act=0.2;
+  	Network[i].S=0;
+    //fprintf(file_output,"Neuron%d ",i+1);
   }
 
-  while (Time<=1000){
+  fprintf(file_output,"\n");
+
+  while (Time<=10){
+
+  	for(i=0;i<500;i++){
+  		Network[i].S=0;
+  		H=0;
+  		for(j=0;j<500;j++){
+  			if (Matrix[i][j]==1){
+  				if (Network[j].x-0.5>=0){
+  					H=1;
+  				}
+  				Network[i].S+=0.1*H;
+  			}
+  		}
+
+  	}
+
+    fprintf(file_output,"%f ",Time);
+
+  	for (i=0;i<500;i++){
+  		Network[i].x+=(3*Network[i].x)-(pow(Network[i].x,3))+2-(Network[i].y)+(Network[i].act)+(Network[i].S);
+  		Network[i].y+=0.02*(6.0*(1+tanh(Network[i].x/0.1))-Network[i].y);
+      fprintf(file_output,"%f ",Network[i].x);
+  	}
+
+    fprintf(file_output,"\n");
 
   	Time+=DELTA_T;
   }
   
 
-  /*snprintf(CallPlot,sizeof(CallPlot),"gnuplot -p -e \"set terminal x11 enhanced background rgb \'grey\';set key outside; set key center top;set title \'Population\';set xlabel \'Time\';set ylabel \'Population\'; set logscale y; set yrange [0.1:1000];plot \'plot.dat\' using 1:2 title \'Grass\' with line lt -1 lw 2 lc rgb \'green\', \\\n \'plot.dat\' using 1:3 title \'Rabbit\' with line lt -1 lw 2 lc rgb \'brown\', \\\n \'plot.dat\' using 1:4 title \'Insect\' with line lt -1 lw 2 lc rgb \'black\', \\\n \'plot.dat\' using 1:5 title \'Lizard\' with line lt -1 lw 2 lc rgb \'orange\', \\\n \'plot.dat\' using 1:6 title \'Cobra\' with line lt -1 lw 2 lc rgb \'blue\', \\\n \'plot.dat\' using 1:7 title \'Bird\' with line lt -1 lw 2 lc rgb \'yellow\'\"");
+  snprintf(CallPlot,sizeof(CallPlot),"gnuplot -p -e \"set terminal x11 enhanced background rgb \'grey\';set key outside; set key center top;set title \'Neurons\';set xlabel \'Time\';set ylabel \'X\'; plot for [col=1:500] \'plot.dat\' using 0:col with lines title columnheader\"");
 
   system(CallPlot);
-  printf("Done!\n");*/
+  printf("Done!\n");
   fclose(file_output);
   return 0;
 }
