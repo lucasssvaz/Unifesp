@@ -4,7 +4,7 @@ This repository contains most of the files that I created and/or used during my 
 
 ## Author
 
-* **Lucas Saavedra Vaz** - *Everything* - [lucasssvaz](https://github.com/lucasssvaz)
+* **Lucas Saavedra Vaz** - *Almost Everything* - [lucasssvaz](https://github.com/lucasssvaz)
 
 ## License
 
