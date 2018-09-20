@@ -1,0 +1,16 @@
+Quartus Prime Archive log --	/home-local/aluno/Count/Count.qarlog
+
+Archive:	/home-local/aluno/Count/Count.qar
+Date:		Tue Sep 11 18:30:34 2018
+Quartus Prime		17.1.0 Build 590 10/25/2017 SJ Standard Edition
+
+	=========== Files Selected: ===========
+/home-local/aluno/Count/Count.bdf
+/home-local/aluno/Count/Count.qpf
+/home-local/aluno/Count/Count.qsf
+/home-local/aluno/Count/SeteSeg.bdf
+/opt/intelFPGA/17.1/quartus/linux64/assignment_defaults.qdf
+	======= Total: 5 files to archive =======
+
+	================ Status: ===============
+All files archived successfully.
