@@ -17,17 +17,17 @@ def BubbleSort(database):
                     k = k+1
                 else:
                     if (data.iloc[j-1,k] > data.iloc[j,k]):
-                        aux = data.iloc[j-1].copy()
+                        aux = data.iloc[j-1].copy(deep=True)
                         #print(data.head())
                         #print(aux)
-                        data.iloc[j-1] = data.iloc[j].copy()
+                        data.iloc[j-1] = data.iloc[j].copy(deep=True)
                         #print (data.head())
-                        data.iloc[j] = aux.copy()
+                        data.iloc[j] = aux.copy(deep=True)
                         #print (data.head())
                         swap = 1
                         #print("SWAP")            
                     break
-            print(str(i) + "," + str(j) + "," + str(k))
+            #print(str(i) + "," + str(j) + "," + str(k))
         if not swap:
             break    
     return data
