@@ -1,0 +1,8 @@
+imprimeAlgo(0)
+*
+imprimeAlgo(1)
+[*,*]
+imprimeAlgo(2) 
+[[*,*],[*,*]]
+imprimeAlgo(3)
+[[[*,*],[*,*]],[[*,*],[*,*]]]
