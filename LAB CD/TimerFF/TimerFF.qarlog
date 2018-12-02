@@ -1,0 +1,17 @@
+Quartus Prime Archive log --	/home-local/aluno/Downloads/TimerFF/TimerFF.qarlog
+
+Archive:	/home-local/aluno/Downloads/TimerFF/TimerFF.qar
+Date:		Tue Sep 25 19:35:11 2018
+Quartus Prime		17.1.0 Build 590 10/25/2017 SJ Standard Edition
+
+	=========== Files Selected: ===========
+/home-local/aluno/Downloads/TimerFF/Count.bdf
+/home-local/aluno/Downloads/TimerFF/Count.qpf
+/home-local/aluno/Downloads/TimerFF/Count.qsf
+/home-local/aluno/Downloads/TimerFF/Second.v
+/home-local/aluno/Downloads/TimerFF/SeteSeg.bdf
+/opt/intelFPGA/17.1/quartus/linux64/assignment_defaults.qdf
+	======= Total: 6 files to archive =======
+
+	================ Status: ===============
+All files archived successfully.

@@ -1,0 +1,23 @@
+module SeteSeg(input bin [3:0], output reg disp [7:0]);
+	
+	always@(*)
+	begin
+		if (bin < 4'd10) begin
+			case (bin)
+			4'b0000 : disp = 8'b11111100;
+			4'b0001 : disp = 8'b01100000;
+			4'b0010 : disp = 8'b11011010;
+			4'b0011 : disp = 8'b11110010;
+			4'b0100 : disp = 8'b01100110;
+			4'b0101 : disp = 8'b10110110;
+			4'b0110 : disp = 8'b10111110;
+			4'b0111 : disp = 8'b11100000;
+			4'b1000 : disp = 8'b11111110;
+			4'b1001 : disp = 8'b11110110;
+			endcase
+		end else begin
+			disp = 8'b00000000;
+		end
+	end
+endmodule
+	

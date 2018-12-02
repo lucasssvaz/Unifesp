@@ -1,0 +1,15 @@
+Quartus Prime Archive log --	/home-local/aluno/Downloads/SeteSeg_Verilog/SeteSeg_Verilog.qarlog
+
+Archive:	/home-local/aluno/Downloads/SeteSeg_Verilog/SeteSeg_Verilog.qar
+Date:		Tue Nov 27 18:43:40 2018
+Quartus Prime		17.1.0 Build 590 10/25/2017 SJ Standard Edition
+
+	=========== Files Selected: ===========
+/home-local/aluno/Downloads/SeteSeg_Verilog/SeteSeg.v
+/home-local/aluno/Downloads/SeteSeg_Verilog/SeteSeg_Verilog.qpf
+/home-local/aluno/Downloads/SeteSeg_Verilog/SeteSeg_Verilog.qsf
+/opt/intelFPGA/17.1/quartus/linux64/assignment_defaults.qdf
+	======= Total: 4 files to archive =======
+
+	================ Status: ===============
+All files archived successfully.
