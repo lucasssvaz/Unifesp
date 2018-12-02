@@ -1,0 +1,29 @@
+Quartus Prime Archive log --	C:/Users/lucas/Google Drive/Unifesp/LAB CD/Moore/Moore.qarlog
+
+Archive:	C:/Users/lucas/Google Drive/Unifesp/LAB CD/Moore/Moore.qar
+Date:		Tue Oct 23 19:27:59 2018
+Quartus Prime		18.0.0 Build 614 04/24/2018 SJ Lite Edition
+
+	=========== Files Selected: ===========
+C:/Users/lucas/Google Drive/Unifesp/LAB CD/Moore/Input.bdf
+C:/Users/lucas/Google Drive/Unifesp/LAB CD/Moore/Moore.bdf
+C:/Users/lucas/Google Drive/Unifesp/LAB CD/Moore/Moore.qpf
+C:/Users/lucas/Google Drive/Unifesp/LAB CD/Moore/Moore.qsf
+C:/Users/lucas/Google Drive/Unifesp/LAB CD/Moore/MooreDebug.bdf
+C:/Users/lucas/Google Drive/Unifesp/LAB CD/Moore/Output.bdf
+C:/Users/lucas/Google Drive/Unifesp/LAB CD/Moore/Project.bdf
+C:/Users/lucas/Google Drive/Unifesp/LAB CD/Moore/State.bdf
+C:/Users/lucas/Google Drive/Unifesp/LAB CD/Moore/Timer.bdf
+C:/Users/lucas/Google Drive/Unifesp/LAB CD/Moore/mux2.bdf
+C:/Users/lucas/Google Drive/Unifesp/LAB CD/Moore/seteseg.bdf
+c:/intelfpga_lite/18.0/quartus/bin64/assignment_defaults.qdf
+	======= Total: 12 files to archive =======
+
+	================ Status: ===============
+All files archived successfully.
+
+
+******* Archived project restoration attempt on Sun Oct 28 19:12:59 2018
+Source archive file:	C:/Users/lucas/Google Drive/Unifesp/LAB CD/Moore/Moore.qar
+Archive was extracted into	C:/Users/lucas/Google Drive/Unifesp/LAB CD/Moore/Moore_restored/
+		 - successfully.

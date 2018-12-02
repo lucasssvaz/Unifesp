@@ -1,0 +1,16 @@
+Quartus Prime Archive log --	/home-local/aluno/Downloads/Adder_Verilog/Adder_Verilog.qarlog
+
+Archive:	/home-local/aluno/Downloads/Adder_Verilog/Adder_Verilog.qar
+Date:		Tue Nov 27 18:27:36 2018
+Quartus Prime		17.1.0 Build 590 10/25/2017 SJ Standard Edition
+
+	=========== Files Selected: ===========
+/home-local/aluno/Downloads/Adder_Verilog/Adder_Verilog.qpf
+/home-local/aluno/Downloads/Adder_Verilog/Adder_Verilog.qsf
+/home-local/aluno/Downloads/Adder_Verilog/Adder_Verilog.v
+/home-local/aluno/Downloads/Adder_Verilog/SeteSeg.v
+/opt/intelFPGA/17.1/quartus/linux64/assignment_defaults.qdf
+	======= Total: 5 files to archive =======
+
+	================ Status: ===============
+All files archived successfully.
