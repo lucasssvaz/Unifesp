@@ -1,4 +1,4 @@
-module Timer_Verilog(input sysclock, output reg new_clock);
+module ClockManager(input clk, output reg new_clock);
 
 integer num;
 reg [25:0] count;
@@ -8,15 +8,15 @@ initial begin
 	count = 0;
 end
 
-always@(posedge sysclock)
+always@(posedge clk)
 begin
 	if (count<num)
 	begin
-		count = count + 1;
+		count <= count + 1;
 	end
 	else begin
-		count = 0;
-		new_clock = ~new_clock;
+		count <= 0;
+		new_clock <= ~new_clock;
 	end
 end
 
