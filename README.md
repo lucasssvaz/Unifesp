@@ -27,4 +27,4 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 * My Teachers
 * My Friends
-* To all people that helped me to acomplish my projects :)
+* All the people that helped me to acomplish my projects :)
