@@ -34,12 +34,13 @@ int main (){
 	int i;
 	int Size_Ch, Size_Sc, *Chords;
 	int Res = 0, Inc;
-	int *Frontier;
+	int *Frontier, *Frontier_E;
 
 	scanf("%d %d",&Size_Sc,&Size_Ch);
 
 	Chords = (int *) calloc(Size_Ch, sizeof(int));
 	Frontier = (int *) calloc(Size_Ch, sizeof(int));
+	Frontier_E = (int *) calloc(Size_Ch, sizeof(int));
 
 	for(i = 0; i < Size_Ch; i++){
 		scanf("%d",&Chords[i]);
@@ -48,12 +49,13 @@ int main (){
 	Inc = Size_Sc/Size_Ch;
 
 	for(i = 1; i < Size_Ch; i++){
-		Frontier[i] = Frontier[i-1] + Inc;
+		Frontier_E[i] = Frontier[i] = Frontier[i-1] + Inc;
 	}
 
-	int Max = Frontier[1];
+	int Max_D = Frontier[1];
+	int Max_E = Frontier[Size_Ch-1];
 
-	while (Frontier[0] < Max){
+	while (Frontier[0] < Max_D){
 
 		if (Res = Verify_Frontiers(Chords, Size_Ch, Frontier, Size_Sc))
 			break;
@@ -63,6 +65,23 @@ int main (){
 		}
 
 	}
+
+	do {
+
+		if (Res = Verify_Frontiers(Chords, Size_Ch, Frontier, Size_Sc))
+			break;
+
+		if (Frontier[0] == 0){
+			Frontier[0] = Size_Sc;
+		}
+
+		for(i = 0; i < Size_Ch; i++){
+			Frontier[i] = (Frontier[i] - DELTA);
+		}
+
+	} while (Frontier[0] > Max_E);
+
+
 
 	Res ? printf("S\n") : printf("N\n");
 	free (Chords);
