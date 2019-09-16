@@ -9,15 +9,14 @@ int Verify_Frontiers(int *Chords, int Size_Ch, int *Frontier, int Size_Sc){
 	int *Count = (int *) calloc(Size_Ch,sizeof(int));
 
 	for (i = 0; i < Size_Ch; i++){
-		for (j = 0; j < Size_Ch; j++){
-			if (i == Size_Ch-1){
-				if (Chords[j] >= Frontier[i] && Chords[j] < (Frontier[0]+Size_Sc)){
-					Count[i]++;
-				}
-			} else if (Chords[j] >= Frontier[i] && Chords[j] < Frontier[i+1]){
+		if (i == Size_Ch-1){
+			if (Chords[i] >= Frontier[i] && Chords[i] < (Frontier[0]+Size_Sc)){
 				Count[i]++;
 			}
+		} else if (Chords[i] >= Frontier[i] && Chords[i] < Frontier[i+1]){
+			Count[i]++;
 		}
+	
 	}
 
 	for (i = 0; i < Size_Ch; i++){

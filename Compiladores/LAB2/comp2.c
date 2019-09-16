@@ -6,27 +6,28 @@
 	int, while, if, return, void, else
 */
 
-int verify_buf (char *buffer){
+void verify_buf (char *buffer){
 	
-	int con = 0;
 	int i = 0;
 	
-	if ((strcmp(buffer,"int") == 0) || (strcmp(buffer,"while") == 0) || (strcmp(buffer,"if") == 0) || (strcmp(buffer,"return") == 0) || (strcmp(buffer,"void") == 0) || (strcmp(buffer,"void") == 0)) {
-		con = 1;
+	if ((strcmp(buffer,"int") == 0) || (strcmp(buffer,"while") == 0) || (strcmp(buffer,"if") == 0) || (strcmp(buffer,"return") == 0) || (strcmp(buffer,"void") == 0)) {
 		while (buffer[i] != '\0'){
 			buffer[i] = buffer[i] - 32;
 			i++;
 		}
+	} else {
+		buffer[0] = 'I';
+		buffer[1] = 'D';
+		buffer[2] = '\0';
 	}
-	
-	return con;
+	return;
 }
 
 int main(){
 
 	FILE *out_file, *in_file;
 	
-	char C, buffer[256];
+	char C, buffer[256] = "";
 	int len;
 		
 	in_file = fopen("sort.txt","r");
