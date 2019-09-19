@@ -1,0 +1,3 @@
+[submodule "IC-CubeSat"]
+	path = /home/lucassvaz/Desktop/Link to Google Drive/Unifesp/Git/Unifesp/IC-CubeSat
+	url = git://github.com/lucasssvaz/IC-CubeSat.git
