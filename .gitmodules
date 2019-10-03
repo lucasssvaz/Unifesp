@@ -1,0 +1,4 @@
+[submodule "SW-Eng-Project"]
+	url = https://github.com/lucasssvaz/SW-Eng-Project.git
+[submodule "IC-CubeSat"]
+	url = https://github.com/lucasssvaz/IC-CubeSat.git
