@@ -59,7 +59,7 @@ def FindParam (Population,Coef,Generations,T,ALPHA,YEARS):
     OldSol = [BestPopulation,BestCoef]
     OldTime = BestTime
     Delta=0
-    File_Output = open("/home/lucassvaz/Documents/Codes/Unifesp/Mod. Comp./Food Web/output.txt","w+")
+    File_Output = open("output.txt","w+")
     File_Output.write(str([BestPopulation,BestCoef,BestTime]))
     File_Output.close()
     
@@ -79,7 +79,7 @@ def FindParam (Population,Coef,Generations,T,ALPHA,YEARS):
                 BestCoef = list(NewSol[1])
                 BestTime = NewTime
                 BestVar = NewVar
-                File_Output = open("/home/lucassvaz/Documents/Codes/Unifesp/Mod. Comp./Food Web/output.txt","w+")
+                File_Output = open("output.txt","w+")
                 File_Output.write(str([BestPopulation,BestCoef,BestTime]))
                 File_Output.close()
         if NewTime-BestTime==0:
@@ -88,7 +88,7 @@ def FindParam (Population,Coef,Generations,T,ALPHA,YEARS):
                 BestCoef = list(NewSol[1])
                 BestTime = NewTime
                 BestVar = NewVar
-                File_Output = open("/home/lucassvaz/Documents/Codes/Unifesp/Mod. Comp./Food Web/output.txt","w+")
+                File_Output = open("output.txt","w+")
                 File_Output.write(str([BestPopulation,BestCoef,BestTime]))
                 File_Output.close()
         if math.exp(-Delta/T) < 0.00001:
@@ -117,7 +117,7 @@ Lizard = 3
 Cobra = 4
 Bird = 5
 
-File_Input = open("/home/lucassvaz/Documents/Codes/Unifesp/Mod. Comp./Food Web/inputPY.txt","r")
+File_Input = open("inputPY.txt","r")
 
 random.seed(time.time())
 
