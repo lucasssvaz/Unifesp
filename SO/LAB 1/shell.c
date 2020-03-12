@@ -57,17 +57,39 @@ char **tokenizer(char *rawStr, int *NTok);
 char ***parser(int NTok, char **tokStr);
 int searchIOFilesBG(int NTok, char **tokStr, int *input, int *output, int *BG);
 void printComMat(char ***ComMat, int inputFD, int outputFD, int BG);
-void execBasic(char*** ComMat, int inputFD, int outputFD);
-void execPipe(char*** ComMat, int inputFD, int outputFD);
-void execBG(char*** ComMat, int inputFD, int outputFD, int *CPID);
+void execBasic(char ***ComMat, int inputFD, int outputFD);
+void execPipe(char ***ComMat, int inputFD, int outputFD);
+static inline void execBG(char ***ComMat, int inputFD, int outputFD, int *CPID);
+char *replaceSubstring(char *MainString, char *Substring);
 
 int NCom;
 
 
 //================================================================================================================================ FUNCTIONS
 
+char *replaceSubstring(char *MainString, char *Substring){
+	char *newString = (char *) calloc(2,sizeof(char));
+	newString[0] = '~';
 
-void welcome(){
+	int new_size = 1;
+
+	int sub_size = strlen(Substring);
+
+	while (MainString[sub_size+new_size-1] != '\0'){
+		newString = (char *) realloc (newString, (new_size+2)*sizeof(char));
+		newString[new_size] = MainString[sub_size+new_size-1];
+		new_size++;
+	}
+
+	newString[new_size] = '\0';
+
+
+	return newString;
+}
+
+//---------------------------------------------------------------------------------------------------------------------
+
+static inline void welcome(){
 
 	PRINTF_CYAN("\n*******************************************************************\n");
 	PRINTF_RED("\n\t\t\tW ");
@@ -168,13 +190,13 @@ char **tokenizer(char *rawStr, int *NTok){
 	rawStr = strtok(rawStr,"\n");
 
 	char *CurrentWord = strtok(rawStr," ");
-	char **tokStr = malloc(sizeof(char *));
+	char **tokStr = (char **) malloc(sizeof(char *));
 
 	*NTok = 0;
 
 	do{
 		(*NTok)++;
-		tokStr = realloc(tokStr,(*NTok)*sizeof(char *));
+		tokStr = (char **) realloc(tokStr,(*NTok)*sizeof(char *));
 		tokStr[(*NTok)-1] = CurrentWord;
 	} while ((CurrentWord = strtok(NULL," ")) != NULL);
 
@@ -291,7 +313,7 @@ void execPipe(char*** ComMat, int inputFD, int outputFD){
 //-------------------------------------------------------------------------------------------------------------------
 
 
-void execBG(char*** ComMat, int inputFD, int outputFD, int *CPID){
+static inline void execBG(char*** ComMat, int inputFD, int outputFD, int *CPID){
 
 	if((*CPID = fork()) == 0){
 
@@ -341,14 +363,21 @@ void execBasic(char*** ComMat, int inputFD, int outputFD){
 int main(){
 
 	int NTok, BG = 0, inputFD = -1, outputFD = -1, exit_main, CPID = 0;
-	char ***ComMat, rawStr[PATH_MAX], **tokStr, cwd[PATH_MAX], *user, host[HOST_NAME_MAX], *path, *rawStrBak;
+	char ***ComMat, rawStr[PATH_MAX], **tokStr, RawCwd[PATH_MAX], *cwd, *user, host[HOST_NAME_MAX], *path, *rawStrBak;
 	struct passwd *pass;
 
 	// FD[0] = Read, FD[1] = Write
 
 	welcome();
 
+	const char *homedir;
+
+	if ((homedir = getenv("HOME")) == NULL) {
+	    homedir = getpwuid(getuid())->pw_dir;
+	}
+
 	do{
+		cwd = (char *) calloc(PATH_MAX+1, sizeof(char));
 		BG = 0;
 		inputFD = -1;
 		outputFD = -1;
@@ -365,13 +394,18 @@ int main(){
 			exit(-4);
 		}
 
-		if (getcwd(cwd,PATH_MAX) != NULL){
+		if (getcwd(RawCwd,PATH_MAX) != NULL){
 			PRINTF_GREEN(user);
 			PRINTF_GREEN("@");
 			PRINTF_GREEN(host);
 			PRINTF_GREEN(":");
-			PRINTF_GREEN(cwd);
-			PRINTF_GREEN("$ ");
+			if (strstr(RawCwd,homedir) != NULL){
+				cwd = replaceSubstring(RawCwd, (char *) homedir);
+			} else {
+				strncpy(cwd,RawCwd,PATH_MAX);
+			}
+			PRINTF_CYAN(cwd);
+			PRINTF_CYAN("$ ");
 		} else {
 			perror("get CWD");
 			exit(-4);
@@ -408,6 +442,9 @@ int main(){
 			} else if (NCom && strcmp(ComMat[0][0],"killbg") != 0) {
 
 				path = &rawStrBak[3];
+
+				if (strcmp(path, "~") == 0)
+					path = (char *) homedir;
 
 				if (chdir(path) < 0){
 
