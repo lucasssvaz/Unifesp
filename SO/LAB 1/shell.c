@@ -399,7 +399,7 @@ int main(){
 			PRINTF_GREEN("@");
 			PRINTF_GREEN(host);
 			PRINTF_GREEN(":");
-			if (strstr(RawCwd,homedir) != NULL){
+			if (strstr(RawCwd, homedir) != NULL){
 				cwd = replaceSubstring(RawCwd, (char *) homedir);
 			} else {
 				strncpy(cwd,RawCwd,PATH_MAX);
@@ -473,9 +473,9 @@ int main(){
 		}
 
 		if (NCom == 0){
-            exit_main = 1;
+			exit_main = 1;
 		} else if (strcmp(ComMat[0][0],"exit") == 0){
-            exit_main = 0;
+			exit_main = 0;
 		} else {
 			exit_main = 1;
 		}
