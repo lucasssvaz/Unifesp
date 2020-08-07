@@ -34,7 +34,7 @@ printf 'Checking Openconnect... ' 2>&1 | sudo tee -a $file
 if ! which openconnect &> /dev/null 2>&1; then
   	printf "Installing Openconnect...\n" | sudo tee -a $file
     cd /usr/src
-    sudo git clone https://github.com/dlenski/openconnect.git 2>&1 | sudo tee -a $file
+    sudo git clone https://github.com/vrmiguel/openconnect-unifesp.git 2>&1 | sudo tee -a $file
     cd openconnect
     sudo ./autogen.sh 2>&1 | sudo tee -a $file
     sudo ./configure 2>&1 | sudo tee -a $file
