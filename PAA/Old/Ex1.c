@@ -52,7 +52,7 @@ int main (){
 	Chords = (int *) calloc(Size_Ch, sizeof(int));
 	Frontier = (int *) calloc(Size_Ch, sizeof(int));
 
-	for(i = 0; i < Size_Ch; i++){
+	for(int i = 0; i < Size_Ch; i++){
 		scanf("%d",&Chords[i]);
 	}
 

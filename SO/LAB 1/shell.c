@@ -1,7 +1,10 @@
-//
 //	Sistemas Operacionais - Lab 1
+//	
 //		Lucas Saavedra Vaz
 //			120503
+//
+//		Vinícius Santiago do Amaral
+//			120640
 //
 //--------------------------------------
 //
@@ -99,7 +102,7 @@ static inline void welcome(){
 	PRINTF_MAGENTA("O ");
 	PRINTF_CYAN("M ");
 	printf("E\n\n");
-	PRINTF_YELLOW("\t\tSistemas Operacionais - Lab 1\n\t\tLucas Saavedra Vaz\n\t\t120503\n\n");
+	PRINTF_YELLOW("\t\tSistemas Operacionais - Lab 1\n\n\t\tLucas Saavedra Vaz\n\t\t120503\n\n\t\tVinícius Santiago do Amaral\n\t\t120640\n\n");
 	PRINTF_CYAN("*******************************************************************\n\n");
 
 	return;
@@ -134,6 +137,7 @@ void printComMat(char ***ComMat, int inputFD, int outputFD, int BG){
 int searchIOFilesBG(int NTok, char **tokStr, int *inputFD, int *outputFD, int *BG){
 
 	int i;
+	int App = 0;
 	int PosOut = -1, PosIn = -1;
 
 	if (tokStr[0] == NULL){
@@ -147,6 +151,8 @@ int searchIOFilesBG(int NTok, char **tokStr, int *inputFD, int *outputFD, int *B
 		} else if (tokStr[i][0] == '>'){
 			//output
 			PosOut = i+1;
+			if (tokStr[i][1] == '>')
+				App = 1;
 		} else if (tokStr[i][0] == '&'){
 			*BG = 1;
 		}
@@ -154,7 +160,10 @@ int searchIOFilesBG(int NTok, char **tokStr, int *inputFD, int *outputFD, int *B
 
 	if (PosIn != -1 && PosOut != -1){
 		if (strcmp(tokStr[PosIn],tokStr[PosOut]) == 0){
-			*inputFD = open(tokStr[PosIn], O_RDWR | O_TRUNC, S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH);
+			if (App)
+				*inputFD = open(tokStr[PosIn], O_RDWR | O_APPEND, S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH);
+			else
+				*inputFD = open(tokStr[PosIn], O_RDWR | O_TRUNC, S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH);
 			*outputFD = *inputFD;
 			if (*inputFD < 0){
 				perror("Open (O_RDWR)");
@@ -170,7 +179,10 @@ int searchIOFilesBG(int NTok, char **tokStr, int *inputFD, int *outputFD, int *B
         }
     }
     if (PosOut != -1 && *outputFD < 0){
-        *outputFD = open(tokStr[PosOut], O_WRONLY | O_CREAT | O_TRUNC, S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH);
+    	if (App)
+    		*outputFD = open(tokStr[PosOut], O_WRONLY | O_CREAT | O_APPEND, S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH);
+    	else
+        	*outputFD = open(tokStr[PosOut], O_WRONLY | O_CREAT | O_TRUNC, S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH);
         if (*outputFD < 0){
             perror("Open (O_WRONLY)");
             exit(-1);
@@ -411,7 +423,11 @@ int main(){
 			exit(-4);
 		}
 
-		fgets(rawStr,PATH_MAX,stdin);
+		char *ret = fgets(rawStr,PATH_MAX,stdin);
+		if (ret == NULL) {
+			perror("Get String");
+			exit(-4);
+		}
 
 		rawStrBak = (char *) malloc (sizeof(rawStr));
 		strncpy(rawStrBak,rawStr,PATH_MAX);
