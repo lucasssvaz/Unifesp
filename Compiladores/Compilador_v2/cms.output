@@ -1,7 +1,7 @@
 Terminals unused in grammar
 
-   ERROR
-   ENDFILE
+    ERROR
+    ENDFILE
 
 
 State 109 conflicts: 1 shift/reduce
@@ -108,101 +108,130 @@ Grammar
 
 Terminals, with rules where they appear
 
-$end (0) 0
-error (256)
-IF (258) 31 32
-ELSE (259) 32
-WHILE (260) 33
-INT (261) 6 7 8 14 15
-VOID (262) 9 11
-RETURN (263) 34 35
-NUM (264) 65
-ID (265) 64
-ASSIGN (266) 36
-EQ (267) 42
-NE (268) 43
-LT (269) 44
-LTE (270) 45
-GT (271) 46
-GTE (272) 47
-PLUS (273) 50
-MINUS (274) 51
-TIMES (275) 54
-OVER (276) 55
-LPAR (277) 8 9 31 32 33 56 60 61
-RPAR (278) 8 9 31 32 33 56 60 61
-LBRK (279) 7 15 39
-RBRK (280) 7 15 39
-LBRC (281) 16 17 18 19
-RBRC (282) 16 17 18 19
-COMMA (283) 12 62
-SEMI (284) 6 7 29 30 34 35
-ERROR (285)
-ENDFILE (286)
+    $end (0) 0
+    error (256)
+    IF (258) 31 32
+    ELSE (259) 32
+    WHILE (260) 33
+    INT (261) 6 7 8 14 15
+    VOID (262) 9 11
+    RETURN (263) 34 35
+    NUM (264) 65
+    ID (265) 64
+    ASSIGN (266) 36
+    EQ (267) 42
+    NE (268) 43
+    LT (269) 44
+    LTE (270) 45
+    GT (271) 46
+    GTE (272) 47
+    PLUS (273) 50
+    MINUS (274) 51
+    TIMES (275) 54
+    OVER (276) 55
+    LPAR (277) 8 9 31 32 33 56 60 61
+    RPAR (278) 8 9 31 32 33 56 60 61
+    LBRK (279) 7 15 39
+    RBRK (280) 7 15 39
+    LBRC (281) 16 17 18 19
+    RBRC (282) 16 17 18 19
+    COMMA (283) 12 62
+    SEMI (284) 6 7 29 30 34 35
+    ERROR (285)
+    ENDFILE (286)
 
 
 Nonterminals, with rules where they appear
 
-$accept (32)
-    on left: 0
-program (33)
-    on left: 1, on right: 0
-list_declaration (34)
-    on left: 2 3, on right: 1 2
-declaration (35)
-    on left: 4 5, on right: 2 3
-var_declaration (36)
-    on left: 6 7, on right: 4 20 21
-fun_declaration (37)
-    on left: 8 9, on right: 5
-params (38)
-    on left: 10 11, on right: 8 9
-param_list (39)
-    on left: 12 13, on right: 10 12
-param (40)
-    on left: 14 15, on right: 12 13
-compound_decl (41)
-    on left: 16 17 18 19, on right: 8 9 25
-local_declarations (42)
-    on left: 20 21, on right: 16 17 20
-statement_list (43)
-    on left: 22 23, on right: 16 18 22
-statement (44)
-    on left: 24 25 26 27 28, on right: 22 23 31 32 33
-expression_decl (45)
-    on left: 29 30, on right: 24
-selection_decl (46)
-    on left: 31 32, on right: 26
-iterator_decl (47)
-    on left: 33, on right: 27
-return_decl (48)
-    on left: 34 35, on right: 28
-expression (49)
-    on left: 36 37, on right: 29 31 32 33 35 36 39 56 62 63
-var (50)
-    on left: 38 39, on right: 36 57
-simple_expression (51)
-    on left: 40 41, on right: 37
-relational (52)
-    on left: 42 43 44 45 46 47, on right: 40
-sum_expression (53)
-    on left: 48 49, on right: 40 41 48
-sum (54)
-    on left: 50 51, on right: 48
-term (55)
-    on left: 52 53, on right: 48 49 52
-mult (56)
-    on left: 54 55, on right: 52
-factor (57)
-    on left: 56 57 58 59, on right: 52 53
-activation (58)
-    on left: 60 61, on right: 58
-arg_list (59)
-    on left: 62 63, on right: 60 62
-ident (60)
-    on left: 64, on right: 6 7 8 9 14 15 38 39 60 61
-num (61)
-    on left: 65, on right: 7 59
+    $accept (32)
+        on left: 0
+    program (33)
+        on left: 1
+        on right: 0
+    list_declaration (34)
+        on left: 2 3
+        on right: 1 2
+    declaration (35)
+        on left: 4 5
+        on right: 2 3
+    var_declaration (36)
+        on left: 6 7
+        on right: 4 20 21
+    fun_declaration (37)
+        on left: 8 9
+        on right: 5
+    params (38)
+        on left: 10 11
+        on right: 8 9
+    param_list (39)
+        on left: 12 13
+        on right: 10 12
+    param (40)
+        on left: 14 15
+        on right: 12 13
+    compound_decl (41)
+        on left: 16 17 18 19
+        on right: 8 9 25
+    local_declarations (42)
+        on left: 20 21
+        on right: 16 17 20
+    statement_list (43)
+        on left: 22 23
+        on right: 16 18 22
+    statement (44)
+        on left: 24 25 26 27 28
+        on right: 22 23 31 32 33
+    expression_decl (45)
+        on left: 29 30
+        on right: 24
+    selection_decl (46)
+        on left: 31 32
+        on right: 26
+    iterator_decl (47)
+        on left: 33
+        on right: 27
+    return_decl (48)
+        on left: 34 35
+        on right: 28
+    expression (49)
+        on left: 36 37
+        on right: 29 31 32 33 35 36 39 56 62 63
+    var (50)
+        on left: 38 39
+        on right: 36 57
+    simple_expression (51)
+        on left: 40 41
+        on right: 37
+    relational (52)
+        on left: 42 43 44 45 46 47
+        on right: 40
+    sum_expression (53)
+        on left: 48 49
+        on right: 40 41 48
+    sum (54)
+        on left: 50 51
+        on right: 48
+    term (55)
+        on left: 52 53
+        on right: 48 49 52
+    mult (56)
+        on left: 54 55
+        on right: 52
+    factor (57)
+        on left: 56 57 58 59
+        on right: 52 53
+    activation (58)
+        on left: 60 61
+        on right: 58
+    arg_list (59)
+        on left: 62 63
+        on right: 60 62
+    ident (60)
+        on left: 64
+        on right: 6 7 8 9 14 15 38 39 60 61
+    num (61)
+        on left: 65
+        on right: 7 59
 
 
 State 0

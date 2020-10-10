@@ -22,9 +22,7 @@
 //	killbg = kill background process
 //
 
-
-//============================================================================================================================= DECLARATIONS
-
+//=============================================================================================================== DECLARATIONS
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -67,8 +65,7 @@ char *replaceSubstring(char *MainString, char *Substring);
 
 int NCom;
 
-
-//================================================================================================================================ FUNCTIONS
+//================================================================================================================== FUNCTIONS
 
 char *replaceSubstring(char *MainString, char *Substring){
 	char *newString = (char *) calloc(2,sizeof(char));
@@ -108,14 +105,12 @@ static inline void welcome(){
 	return;
 }
 
-
 //---------------------------------------------------------------------------------------------------------------------
-
 
 void printComMat(char ***ComMat, int inputFD, int outputFD, int BG){
 	int i = 0, j = 0;
 
-	printf("inputFD: %d\noutputFD: %d\nBG: %d\n", inputFD, outputFD, BG);
+	printf("\ninputFD: %d\noutputFD: %d\nBG: %d\n\n", inputFD, outputFD, BG);
 
 	while (i < NCom){
 		while (ComMat[i][j] != NULL){
@@ -127,12 +122,11 @@ void printComMat(char ***ComMat, int inputFD, int outputFD, int BG){
 		i++;
 	}
 
+	printf("\n");
 	return;
 }
 
-
 //---------------------------------------------------------------------------------------------------------------------
-
 
 int searchIOFilesBG(int NTok, char **tokStr, int *inputFD, int *outputFD, int *BG){
 
@@ -193,9 +187,7 @@ int searchIOFilesBG(int NTok, char **tokStr, int *inputFD, int *outputFD, int *B
 
 }
 
-
-//---------------------------------------------------------------------------------------------------------------------
-
+//-------------------------------------------------------------------------------------------------------------------
 
 char **tokenizer(char *rawStr, int *NTok){
 
@@ -216,9 +208,7 @@ char **tokenizer(char *rawStr, int *NTok){
 
 }
 
-
 //-------------------------------------------------------------------------------------------------------------------
-
 
 char ***parser(int NTok, char **tokStr){
 	int i = 0;
@@ -268,7 +258,6 @@ char ***parser(int NTok, char **tokStr){
 }
 
 //------------------------------------------------------------------------------------------------------------------
-
 
 void execPipe(char*** ComMat, int inputFD, int outputFD){
 
@@ -321,9 +310,7 @@ void execPipe(char*** ComMat, int inputFD, int outputFD){
 	}
 }
 
-
 //-------------------------------------------------------------------------------------------------------------------
-
 
 static inline void execBG(char*** ComMat, int inputFD, int outputFD, int *CPID){
 
@@ -344,9 +331,7 @@ static inline void execBG(char*** ComMat, int inputFD, int outputFD, int *CPID){
 
 }
 
-
 //-------------------------------------------------------------------------------------------------------------------
-
 
 void execBasic(char*** ComMat, int inputFD, int outputFD){
 	if (fork() > 0){
@@ -368,9 +353,7 @@ void execBasic(char*** ComMat, int inputFD, int outputFD){
 	return;
 }
 
-
 //====================================================================================================================== MAIN
-
 
 int main(){
 
@@ -439,7 +422,6 @@ int main(){
 		searchIOFilesBG(NTok, tokStr, &inputFD, &outputFD, &BG);
 
 		//printComMat(ComMat, inputFD, outputFD, BG);
-
 
 		if (BG && NCom) {
 
