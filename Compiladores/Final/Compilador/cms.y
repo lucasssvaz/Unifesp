@@ -97,7 +97,7 @@ params              :   param_list
            				  $$->attr.name = "void";
 						}
                     ;
-param_list          :   param_list COMMA _param
+param_list          :   param_list COMMA param
                         { YYSTYPE t = $1;
                           if(t != NULL)
 						  { while(t->sibling != NULL)
