@@ -98,7 +98,7 @@ int main(int argc, char *argv[])
       exit(1);
     }
     fprintf(listing, "\nCreating Intermediate Code...\n");
-    head = codeGen(syntaxTree, codefile);
+    head = codeGen(syntaxTree, codefile);   //! TODO - Warning - unused
     fprintf(listing, "\nIndermediate Code Created\n");    
     //fprintf(listing, "\nCreating Object Code...\n");
     //printAssembly(head);
