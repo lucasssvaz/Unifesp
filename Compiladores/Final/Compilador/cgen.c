@@ -67,9 +67,9 @@ Address addr_createString(char *name, char *scope)
 {
   Address addr;
   addr.kind = String;
-  addr.contents.var.name = (char *)malloc(strlen(name) * sizeof(char));
+  addr.contents.var.name = malloc(strlen(name) * sizeof(char));
   strcpy(addr.contents.var.name, name);
-  addr.contents.var.scope = (char *)malloc(strlen(scope) * sizeof(char));
+  addr.contents.var.scope = malloc(strlen(scope) * sizeof(char));
   strcpy(addr.contents.var.scope, scope);
   return addr;
 }

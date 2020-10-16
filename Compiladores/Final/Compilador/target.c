@@ -10,9 +10,9 @@ const char *operatorNameInstruction[] = {"add", "addi", "sub", "mul", "div", "lt
 char *regMem[] = {"$v0", "$v1", "$v2", "$v3"};
 char *none = "none";
 
-char *param;
+char *_param;
 char *function;
-char *call;
+char *_call;
 
 OCList ochead;
 VarList varhead = NULL;
@@ -345,7 +345,7 @@ void printAssembly(QuadList q)
 {
     Address a1, a2, a3;
     Operand o1, o2, o3;
-    param = (char *)malloc(sizeof(char) * 10);
+    _param = (char *)malloc(sizeof(char) * 10);
     LabelList label;
     OCList oclist;
     ParamListCount plist;
@@ -491,7 +491,7 @@ void printAssembly(QuadList q)
                 o2 = createString(a2.contents.var.name);
                 o3 = createIntConst(variable->loc);
                 strcpy(variable->trg, a2.contents.var.name);
-                strcpy(param, a2.contents.var.name);
+                strcpy(_param, a2.contents.var.name);
                 insertInstruction(o_lw, o1, o2, o3);
             }
             else
@@ -620,9 +620,9 @@ void printAssembly(QuadList q)
             plist = paramcounthead;
             if (strcmp(a1.contents.var.name, "input") == 0)
             {
-                call = (char *)malloc(strlen(a1.contents.var.name) * sizeof(char));
-                strcpy(call, a1.contents.var.name);
-                plist->func = call;
+                _call = (char *)malloc(strlen(a1.contents.var.name) * sizeof(char));
+                strcpy(_call, a1.contents.var.name);
+                plist->func = _call;
                 o2 = createString(a3.contents.var.name);
                 o1 = createEmpty();
                 o3 = createEmpty();
@@ -630,10 +630,11 @@ void printAssembly(QuadList q)
             }
             else if (strcmp(a1.contents.var.name, "output") == 0)
             {
-                call = (char *)malloc(sizeof(strlen(a1.contents.var.name)));
-                strcpy(call, a1.contents.var.name);
-                plist->func = call;
-                o2 = createString(param);
+                //!
+                _call = malloc(sizeof(strlen(a1.contents.var.name)));
+                strcpy(_call, a1.contents.var.name);
+                plist->func = _call;
+                o2 = createString(_param);
                 o1 = createEmpty();
                 o3 = createEmpty();
                 insertInstruction(o_output, o1, o2, o3);
@@ -641,9 +642,9 @@ void printAssembly(QuadList q)
             else
             {
                 label = findLabel(a1.contents.var.name);
-                call = (char *)malloc(sizeof(strlen(a1.contents.var.name)));
-                strcpy(call, a1.contents.var.name);
-                plist->func = call;
+                _call = malloc(sizeof(strlen(a1.contents.var.name)));
+                strcpy(_call, a1.contents.var.name);
+                plist->func = _call;
                 o1 = createString(a1.contents.var.name);
                 o2 = createIntConst(a2.contents.val);
                 o3 = createString("$v0");
