@@ -28,6 +28,8 @@ extern FILE* code; /* code text file for TM simulator */
 
 extern int lineno; /* source line number for listing */
 
+extern char *codefile;
+
 typedef int TokenType;
 
 /**************************************************/

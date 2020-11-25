@@ -10,6 +10,8 @@
  */
 #define NO_CODE FALSE
 
+#include "codegenerate.h"
+
 #include "util.h"
 #if NO_PARSE
 #include "scan.h"
@@ -98,12 +100,13 @@ int main(int argc, char *argv[])
       exit(1);
     }
     fprintf(listing, "\nCreating Intermediate Code...\n");
-    head = codeGen(syntaxTree, codefile);
+    //head = codeGen(syntaxTree, codefile);
+    printCode(syntaxTree);
     fprintf(listing, "\nIndermediate Code Created\n");    
     //fprintf(listing, "\nCreating Object Code...\n");
     //printAssembly(head);
     //fprintf(listing, "\nObject Code Created\n");
-    //fclose(code);
+    fclose(code);
   }
 #endif  
 

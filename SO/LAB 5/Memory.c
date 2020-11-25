@@ -140,14 +140,15 @@ int main()
 		scanf("%lli", &Frame_Num);
 		if (Frame_Num < 0) Frame_Num = Random_Frame();
 
-		if (Hash_Search(Virtual_Addr) == NULL)
+		if ((Search = Hash_Search(Virtual_Addr)) == NULL)
 		{
 			Hash_Insert(Virtual_Addr, Frame_Num);
-			printf("Added Virual Address %lli and Frame %lli to the Hash.\n\n", Virtual_Addr, Frame_Num);
+			printf("Virtual Address %lli: Added Page %lu and Frame %lli to the Hash.\n\n", Virtual_Addr, Hash_Addr(Virtual_Addr), Frame_Num);
 		}
 		else
 		{
-			printf("Virual Address %lli already in the Hash Table.\n\n", Virtual_Addr);
+			i--;
+			printf("Virtual Address %lli: Page %lu already in the Hash Table.\n\n", Virtual_Addr, Search->Virtual_Page);
 		}
 
 	}

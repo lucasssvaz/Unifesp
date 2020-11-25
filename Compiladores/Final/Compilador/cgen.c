@@ -7,6 +7,7 @@
 #include "globals.h"
 #include "cgen.h"
 #include "target.h"
+#include <fcntl.h>
 
 QuadList head = NULL;
 
@@ -399,13 +400,13 @@ void printCode()
   QuadList q = head;
   Address a1, a2, a3;
   int ind = 1;
-  listing = stdout;
+  listing = code;
   while (q != NULL)
   {
     a1 = q->quad.addr1;
     a2 = q->quad.addr2;
     a3 = q->quad.addr3;
-    fprintf(listing, "%d: (%s, ", ind, operatorName[q->quad.op]);
+    fprintf(listing, "(%s, ", operatorName[q->quad.op]);
     switch (a1.kind)
     {
     case Empty:
@@ -415,7 +416,7 @@ void printCode()
       fprintf(listing, "%d", a1.contents.val);
       break;
     case String:
-      fprintf(stdout, "%s", a1.contents.var.name);
+      fprintf(listing, "%s", a1.contents.var.name);
       break;
     default:
       break;
@@ -469,5 +470,6 @@ QuadList codeGen(TreeNode *syntaxTree, char *codefile)
   insertNode(syntaxTree);
   quad_insert(opHLT, empty, empty, empty);
   printCode();
+  listing = stdout;
   return head;
 }

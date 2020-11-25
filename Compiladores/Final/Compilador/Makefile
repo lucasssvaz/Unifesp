@@ -14,7 +14,7 @@ obj:
 	gcc -Wall -Wextra -g -c *.c 
 
 exec:
-	gcc -Wall -Wextra -g -o Compiler *.o -ly  -lm
+	gcc -Wall -Wextra -g -o Compiler *.o -ly -lm
 
 gdb: all
 	gdb --args Compiler sort.cms
