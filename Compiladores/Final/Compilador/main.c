@@ -5,12 +5,8 @@
 /* set NO_ANALYZE to TRUE to get a parser-only compiler */
 #define NO_ANALYZE FALSE
 
-/* set NO_CODE to TRUE to get a compiler that does not
- * generate code
- */
+/* set NO_CODE to TRUE to get a compiler that does not generate intermediate code */
 #define NO_CODE FALSE
-
-#include "codegenerate.h"
 
 #include "util.h"
 #if NO_PARSE
@@ -20,98 +16,96 @@
 #if !NO_ANALYZE
 #include "analyze.h"
 #if !NO_CODE
-#include "cgen.h"
+#include "intercode.h"
+
 #endif
 #endif
 #endif
 
-#include "target.h"
+#include "assemblycode.h"
+#include "binarycode.h"
 
 /* allocate global variables */
 int lineno = 0;
-FILE *source;
-FILE *listing;
-FILE *code;
+FILE * source;
+FILE * listing;
+FILE * codeinter;
+FILE * acode;
+FILE * bcode;
 
 /* allocate and set tracing flags */
 int EchoSource = FALSE;
 int TraceScan = TRUE;
 int TraceParse = TRUE;
 int TraceAnalyze = TRUE;
-int TraceCode = FALSE;
+int TraceCode = TRUE;
 
 int Error = FALSE;
 
-int main(int argc, char *argv[])
-{
-  TreeNode *syntaxTree;
-  QuadList head;
+int main( int argc, char * argv[] ){ 
+  TreeNode * syntaxTree;
+  QuadList Quads;
+  AssemblyCode codehead;
   char pgm[120]; /* source code file name */
   if (argc != 2)
-  {
-    fprintf(stderr, "usage: %s <filename>\n", argv[0]);
-    exit(1);
-  }
-  strcpy(pgm, argv[1]);
-  if (strchr(pgm, '.') == NULL)
-    strcat(pgm, ".cms");
-  source = fopen(pgm, "r");
-  if (source == NULL)
-  {
-    fprintf(stderr, "File %s not found\n", pgm);
+    { fprintf(stderr,"Como usar: %s <filename>\n",argv[0]);
+      exit(1);
+    }
+  strcpy(pgm,argv[1]) ;
+  if (strchr (pgm, '.') == NULL)
+     strcat(pgm,".cms");
+  source = fopen(pgm,"r");
+  if (source==NULL)
+  { fprintf(stderr,"Arquivo %s nao encontrado\n",pgm);
     exit(1);
   }
   listing = stdout; /* send listing to screen */
-  fprintf(listing, "\nC MINUS COMPILATION: %s\n", pgm);
+  fprintf(listing,"\nCompilacao C-: %s\n",pgm);
+  codeinter= fopen("codintermediario.txt","w+");
+  acode= fopen("codassembly.txt","w+");
+  bcode= fopen("bincode.txt","w+");
 #if NO_PARSE
-  while (getToken() != ENDFILE)
-    ;
+  while (getToken()!=ENDFILE);
 #else
   syntaxTree = parse();
-  if (TraceParse)
-  {
-    fprintf(listing, "\nSyntax tree:\n");
+  if (TraceParse) {
+    fprintf(listing,"\nArvore Sintatica:\n");
     printTree(syntaxTree);
   }
 #if !NO_ANALYZE
-  if (!Error)
-  {
-    if (TraceAnalyze)
-      fprintf(listing, "\nBuilding Symbol Table...\n");
+  if (! Error)
+  { if (TraceAnalyze) fprintf(listing,"\nConstruindo Tabela de Simbolos...\n");
     buildSymtab(syntaxTree);
-    if (TraceAnalyze)
-      fprintf(listing, "\nChecking Types...\n");
+    if (TraceAnalyze) fprintf(listing,"\nChecando Tipos...\n");
     typeCheck(syntaxTree);
-    if (TraceAnalyze)
-      fprintf(listing, "\nType Checking Finished\n");
+    if (TraceAnalyze) fprintf(listing,"\nChecagem de Tipo Concluida\n");
   }
 #if !NO_CODE
-  if (/*!Error*/1)
-  {
-    char *codefile;
-    int fnlen = strcspn(pgm, ".");
-    codefile = (char *)calloc(fnlen + 4, sizeof(char));
-    strncpy(codefile, pgm, fnlen);
-    strcat(codefile, ".tm");
-    code = fopen(codefile, "w+");
-    if (code == NULL)
-    {
-      printf("Unable to open %s\n", codefile);
+  if(!Error){
+    if (codeinter == NULL)
+    { printf("Nao foi possivel abrir \"codintermediario.txt\"\n");
       exit(1);
     }
-    fprintf(listing, "\nCreating Intermediate Code...\n");
-    //head = codeGen(syntaxTree, codefile);
-    printCode(syntaxTree);
-    fprintf(listing, "\nIndermediate Code Created\n");    
-    //fprintf(listing, "\nCreating Object Code...\n");
-    //printAssembly(head);
-    //fprintf(listing, "\nObject Code Created\n");
-    fclose(code);
+    fprintf(codeinter, "\nCodigo Intermediario do %s:\n\n", pgm);
+    if (TraceCode) fprintf(listing,"\nConstruindo Codigo Intermediario...\n");
+    Quads = GenInterCode(syntaxTree);
+    if (TraceCode) fprintf(listing,"\nCodigo Intermediario Concluido\n");
+    fclose(codeinter);
+    fprintf(acode, "\nCodigo Assembly do %s:\n\n", pgm);
+    if (TraceCode) fprintf(listing,"\nConstruindo Codigo Assembly...\n");
+    codehead = GenAssembly(Quads);
+    if (TraceCode) fprintf(listing,"\nCodigo Assembly Concluido\n");
+    if (TraceCode) fprintf(listing,"\nConstruindo Codigo Binario...\n");
+    GenBinary(codehead,getSize());
+    if (TraceCode) fprintf(listing,"\nCodigo Binario Concluido\n");
+    fclose(acode);
+    fclose(bcode);
   }
-#endif  
-
+  
 #endif
 #endif
-  //fclose(source);
+#endif
+  fclose(source);
   return 0;
 }
+

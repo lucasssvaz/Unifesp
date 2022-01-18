@@ -1,6 +1,8 @@
 #ifndef _UTIL_H_
 #define _UTIL_H_
 
+void printType( TokenType);
+
 /* Procedure printToken prints a token 
  * and its lexeme to the listing file
  */
@@ -25,7 +27,5 @@ char * copyString( char * );
  * listing file using indentation to indicate subtrees
  */
 void printTree( TreeNode * );
-
-void defScope(TreeNode* t, char* scope);
 
 #endif

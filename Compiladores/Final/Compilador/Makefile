@@ -1,23 +1,14 @@
-all: clear scanner parser obj exec
-.PHONY : all
+all: tokenizer parser build
 
-clear:
-	rm -f lex.yy.c cms.tab.c cms.tab.h out.txt valgrind-out.txt Compiler *.o *.output *.tm
-
-scanner:
-	flex cms.l
+tokenizer:
+	flex scanner.l
 
 parser:
-	bison -v -d cms.y
+	bison -d parser.y
 
-obj:
-	gcc -Wall -Wextra -g -c *.c 
+build:
+	cc -c *.c -fno-builtin-exp -Wno-implicit-function-declaration -ggdb -O0
+	cc *.o -ly -o Compiler -fno-builtin-exp -ggdb -O0
 
-exec:
-	gcc -Wall -Wextra -g -o Compiler *.o -ly -lm
-
-gdb: all
-	gdb --args Compiler sort.cms
-
-valgrind:
-	valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes --verbose --log-file=valgrind-out.txt ./Compiler sort.cms
+clean:
+	rm -f Compiler lex.yy.c *.o parser.tab.*

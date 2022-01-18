@@ -21,15 +21,7 @@ Mod\. Comp\./Transmission/Transmission
 
 Mod\. Comp\./Transmission/Relatório Transmission\.pdf
 
-Mod\. Comp\./Transmission/Graphs/05-1-50-2-1\.png
-
-Mod\. Comp\./Transmission/Graphs/Screenshot at 2018-06-08 23-40-11\.png
-
-Mod\. Comp\./Transmission/Graphs/Screenshot at 2018-06-08 23-42-13\.png
-
-Mod\. Comp\./Transmission/Graphs/Screenshot at 2018-06-08 23-45-45\.png
-
-Mod\. Comp\./Transmission/Graphs/Screenshot at 2018-06-08 23-46-39\.png
+Mod\. Comp\./Transmission/Graphs/
 
 AED2/tste
 
@@ -40,8 +32,6 @@ LAB AOC/Video/desktop\.ini
 LAB AOC/Video/*.mp4
 
 BD/brModelo\.jar
-
-Reaper_Processor
 
 Reaper_Processor.vpp.*
 PAA/teste
@@ -66,4 +56,12 @@ SO/LAB 4/Trab2_SO.zip
 
 Compiladores/CompT/
 
-Compiladores/Final/Compilador/
+Compiladores/Final/
+
+LAB SO/Processor/db/
+
+LAB SO/Processor/incremental_db/
+
+LAB SO/Processor/output_files/
+
+LAB SO/Ref/
