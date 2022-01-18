@@ -10,3 +10,6 @@
 [submodule "LAB AOC/Reaper_Processor"]
 	path = LAB AOC/Reaper_Processor
 	url = https://github.com/lucasssvaz/Reaper_Processor.git
+[submodule "PCD"]
+	path = PCD
+	url = https://github.com/lucasssvaz/PCD.git
