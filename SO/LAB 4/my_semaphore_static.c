@@ -261,7 +261,7 @@ int Deadlock_Detection()
     {
         //printf("%d\n", i);
         //printf("\n\nWork\n");
-        for (j = 0; j < N_RES; j++)
+        //for (j = 0; j < N_RES; j++)
             //printf("%d ", Work[j]);
         if (Finish[i] == 0)
         {
