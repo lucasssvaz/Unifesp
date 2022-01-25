@@ -1,4 +1,9 @@
-module Extend_Imm (input signed [19:0] In_Imm, input Long_Imm, output reg signed [31:0] Out_Imm);
+module Extend_Imm 
+(
+	input signed [19:0] In_Imm, 
+	input Long_Imm, 
+	output reg signed [31:0] Out_Imm
+);
 
 always @ (In_Imm or Long_Imm)
 begin

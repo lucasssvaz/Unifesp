@@ -4,19 +4,18 @@ module Ctrl_Module
 	output reg IO_Enable,
 	output reg IO_Selection,
 	output reg Reg_Write,
-	//output reg R_Type,
 	output reg Jump_R,
 	output reg Jump_I,
 	output reg Stack_Enable,
 	output reg Stack_Write,
 	output reg Branch,
 	output reg Mem_Write,
-	//output reg W_Only,
 	output reg Mem_To_Reg,
 	output reg [4:0] ALU_Op,
 	output reg ALU_Src,
 	output reg Halt,
-	output reg Long_Imm
+	output reg Long_Imm,
+	output reg Exec_Proc
 );
 
 always @ (Instruction)
@@ -41,6 +40,7 @@ begin
 			ALU_Src = 0;
 			Halt = 0;
 			Long_Imm = 0;
+			Exec_Proc = 0;
 
 			case (Instruction[3:0])
 
@@ -170,6 +170,7 @@ begin
 			ALU_Src = 0;
 			Halt = 0;
 			Long_Imm = 0;
+			Exec_Proc = 0;
 
 			case (Instruction[3:0])
 
@@ -236,6 +237,7 @@ begin
 			ALU_Src = 1;
 			Halt = 0;
 			Long_Imm = 1;
+			Exec_Proc = 0;
 
 			case (Instruction[3:0])
 
@@ -316,6 +318,18 @@ begin
 					Stack_Write = 0;
 				end
 
+				4'b0111: //EXEC
+				begin
+					IO_Enable = 0;
+					IO_Selection = 0;
+					Reg_Write = 0;
+					Jump_R = 0;
+					Jump_I = 0;
+					Stack_Enable = 0;
+					Stack_Write = 0;
+					Exec_Proc = 1;
+				end
+
 				default:
 				begin
 					IO_Enable = 0;
@@ -348,6 +362,7 @@ begin
 			ALU_Src = 1;
 			Halt = 0;
 			Long_Imm = 0;
+			Exec_Proc = 0;
 			
 			case (Instruction[3:0])
 
@@ -501,6 +516,7 @@ begin
 			ALU_Src = 0;
 			Halt = 0;
 			Long_Imm = 0;
+			Exec_Proc = 0;
 			
 		end
 	endcase

@@ -7,20 +7,22 @@
 #define nregtemp 40
 #define nregparam 10
 
-// Armazenamento dos Registradores: 0-31.
-#define sploc 32  // tam 32 
-#define gploc 160 // tam 16
-#define raloc 224 // tam 16
+// Armazenamento dos Registradores: 0-63.
+//Displays: 64-71
+#define sploc 72  // tam 64
+#define gploc 136 // tam 56
+#define raloc 192 // tam 64
 
 //ID DO PROGRAMA
-#define progloc 0 // (0: SO; 1:10 - Programas)
+#define progloc 0 // (0: SO; 1:3 - Programas)
 //POSICAO DA MEMORIA
-#define nmem 288
+#define nmem 256
+#define ninst 512
 
 typedef enum {  nop, halt, add, addi, sub, subi, mult, divi, mod, and, or, not, xor, slt, sgt,
                 sle, sge, shl, shr, move, ret,
                 ldi, beq, bne, jmp, jal, in, out, str, load, jr, 
-                HDtoMI, readSO, readPROC, writeSO, writePROC, armazenandoPC} InstrKind;
+                exec} InstrKind;
 typedef enum {  format1, format2, format3, format4 } InstrFormat;
 typedef enum {  instr, lbl } LineKind;
 typedef enum {  simple, vector, address } VarKind;

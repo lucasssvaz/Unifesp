@@ -26,6 +26,7 @@ quit -f
 
 
 
+
 </modelsim_script>
 <modelsim_script_timing>onerror {exit -code 1}
 vlib work
@@ -44,6 +45,7 @@ proc simTimestamp {} {
 after 2500 simTimestamp
 run -all
 quit -f
+
 
 
 
@@ -85,16 +87,6 @@ HEADER
 	GRID_PHASE = 0.0;
 	GRID_PERIOD = 10.0;
 	GRID_DUTY_CYCLE = 50;
-}
-
-SIGNAL("Sys_Clock")
-{
-	VALUE_TYPE = NINE_LEVEL_BIT;
-	SIGNAL_TYPE = SINGLE_BIT;
-	WIDTH = 1;
-	LSB_INDEX = -1;
-	DIRECTION = INPUT;
-	PARENT = "";
 }
 
 SIGNAL("Display0")
@@ -1214,16 +1206,6 @@ SIGNAL("Raw_Reset_I")
 	WIDTH = 1;
 	LSB_INDEX = -1;
 	DIRECTION = INPUT;
-	PARENT = "";
-}
-
-SIGNAL("Clock")
-{
-	VALUE_TYPE = NINE_LEVEL_BIT;
-	SIGNAL_TYPE = SINGLE_BIT;
-	WIDTH = 1;
-	LSB_INDEX = -1;
-	DIRECTION = OUTPUT;
 	PARENT = "";
 }
 
@@ -3207,18 +3189,24 @@ SIGNAL("DebugSP[0]")
 	PARENT = "DebugSP";
 }
 
-TRANSITION_LIST("Sys_Clock")
+SIGNAL("Fast_Clock")
 {
-	NODE
-	{
-		REPEAT = 1;
-		NODE
-		{
-			REPEAT = 1000;
-			LEVEL 0 FOR 0.5;
-			LEVEL 1 FOR 0.5;
-		}
-	}
+	VALUE_TYPE = NINE_LEVEL_BIT;
+	SIGNAL_TYPE = SINGLE_BIT;
+	WIDTH = 1;
+	LSB_INDEX = -1;
+	DIRECTION = INPUT;
+	PARENT = "";
+}
+
+SIGNAL("Slow_Clock")
+{
+	VALUE_TYPE = NINE_LEVEL_BIT;
+	SIGNAL_TYPE = SINGLE_BIT;
+	WIDTH = 1;
+	LSB_INDEX = -1;
+	DIRECTION = OUTPUT;
+	PARENT = "";
 }
 
 TRANSITION_LIST("Display0[6]")
@@ -4136,15 +4124,6 @@ TRANSITION_LIST("Raw_Reset_I")
 	{
 		REPEAT = 1;
 		LEVEL 1 FOR 1000.0;
-	}
-}
-
-TRANSITION_LIST("Clock")
-{
-	NODE
-	{
-		REPEAT = 1;
-		LEVEL X FOR 1000.0;
 	}
 }
 
@@ -5876,6 +5855,29 @@ TRANSITION_LIST("DebugSP[0]")
 	}
 }
 
+TRANSITION_LIST("Fast_Clock")
+{
+	NODE
+	{
+		REPEAT = 1;
+		NODE
+		{
+			REPEAT = 1000;
+			LEVEL 0 FOR 0.5;
+			LEVEL 1 FOR 0.5;
+		}
+	}
+}
+
+TRANSITION_LIST("Slow_Clock")
+{
+	NODE
+	{
+		REPEAT = 1;
+		LEVEL X FOR 1000.0;
+	}
+}
+
 DISPLAY_LINE
 {
 	CHANNEL = "Raw_Reset_I";
@@ -5887,7 +5889,7 @@ DISPLAY_LINE
 
 DISPLAY_LINE
 {
-	CHANNEL = "Sys_Clock";
+	CHANNEL = "Fast_Clock";
 	EXPAND_STATUS = COLLAPSED;
 	RADIX = Binary;
 	TREE_INDEX = 1;
@@ -5896,7 +5898,7 @@ DISPLAY_LINE
 
 DISPLAY_LINE
 {
-	CHANNEL = "Clock";
+	CHANNEL = "Slow_Clock";
 	EXPAND_STATUS = COLLAPSED;
 	RADIX = Binary;
 	TREE_INDEX = 2;

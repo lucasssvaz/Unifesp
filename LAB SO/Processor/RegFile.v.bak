@@ -1,23 +1,26 @@
 module RegFile
 (
-    //output [31:0] Debug2,       //Outputs Reg 2
-    output [31:0] Debug,
-    input Reset,                //Makes sure Reg 0 is always 0
-    input Slow_Clock,			  //Write Clock
-    input Fast_Clock,
+	output signed [31:0] Data_1,   	  //Data that will outputted by the Reg selected by Reg_1
+	output signed [31:0] Data_2,       //Data that will outputted by the Reg selected by Reg_2
+	output signed [31:0] Data_3,        //Data that will outputted by the Reg selected by Reg_3
+	output signed [31:0] Save_Data[63:0],
+	input Reset,                //Makes sure Reg 0 is always 0
+	input Slow_Clock,			  //Write Clock
+	input Fast_Clock,
+	input Load_Proc,
 	input Reg_Write,            //Write to Reg Flag
-    input [31:0] Write_Data,    //Data that will be written in the Reg selected by Reg_1
-    input [5:0] Reg_1,          //First Register Selection (Read or Write)
-    input [5:0] Reg_2,          //Second Register Selection (Read)
-    input [5:0] Reg_3,         //Third Register Selection (Read)
-    output [31:0] Data_1,   	  //Data that will outputted by the Reg selected by Reg_1
-    output [31:0] Data_2,       //Data that will outputted by the Reg selected by Reg_2
-    output [31:0] Data_3        //Data that will outputted by the Reg selected by Reg_3
+	input signed [31:0] Write_Data,    //Data that will be written in the Reg selected by Reg_1
+	input [5:0] Reg_1,          //First Register Selection (Read or Write)
+	input [5:0] Reg_2,          //Second Register Selection (Read)
+	input [5:0] Reg_3,         //Third Register Selection (Read)
+	input [31:0] Load_Data[63:0]
 );
 
 reg [31:0] Aux_WD;
 reg [5:0] Aux_Reg;
-reg [31:0] RegBank[63:0];
+reg signed [31:0] RegBank[63:0];
+
+assign Save_Data[63:0] = RegBank[63:0];
 
 assign Data_1 = RegBank[Reg_1];
 assign Data_2 = RegBank[Reg_2];
@@ -29,11 +32,15 @@ begin
 	Aux_Reg <= Reg_1;
 end
 
-always @ (negedge Slow_Clock)
+always @ (negedge Slow_Clock or posedge Load_Proc or posedge Reset)
 begin
 	if (Reset)
 	begin
 		RegBank[0] <= {32{1'b0}};
+	end
+	else if (Load_Proc)
+	begin
+		RegBank[63:0] <= Load_Data[63:0];
 	end
 	else if (Reg_Write && (Aux_Reg != 6'b000000))
 	begin

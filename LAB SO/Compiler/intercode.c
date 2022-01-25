@@ -297,16 +297,7 @@ static void ExpNode(TreeNode *tree)
                 mainLocation = location;
             if ((strcmp(tree->attr.name, "input") != 0) && 
             (strcmp(tree->attr.name, "output") != 0) &&
-            (strcmp(tree->attr.name, "HDtoMI") != 0) &&
-            (strcmp(tree->attr.name, "enderecoBase") != 0) && 
-            (strcmp(tree->attr.name, "storeReg") != 0) && 
-            (strcmp(tree->attr.name, "loadReg") != 0) &&  
-            (strcmp(tree->attr.name, "recuperaPC") != 0) && 
-            (strcmp(tree->attr.name, "setandoPC") != 0) && 
-            (strcmp(tree->attr.name, "inputDoContexto") != 0) && 
-            (strcmp(tree->attr.name, "outputDoContexto") != 0) && 
-            (strcmp(tree->attr.name, "execucaoDoProcesso") != 0) && 
-            (strcmp(tree->attr.name, "pegaInterrupcao") != 0))
+            (strcmp(tree->attr.name, "exec_proc") != 0))
             {
                 InsertQuad(opFUN, CreateAddrString(tree->attr.name, tree->scope), empty, empty);
                 // params

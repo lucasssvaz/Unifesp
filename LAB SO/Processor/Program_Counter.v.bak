@@ -10,14 +10,13 @@ reg Lock = 0;
 
 always @ (Halt)
 begin
-	if (Halt && (Proc_ID == 0))
+	if (Halt and (Proc_ID == 0))
 		Lock = 1;
 	else
 		Lock = 0;
 end
 
-always @(posedge Slow_Clock)
-begin
+always @(posedge Slow_Clock) begin
 	if (Reset)
 	begin
 		PC = 0;

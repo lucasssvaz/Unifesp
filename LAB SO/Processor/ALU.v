@@ -3,8 +3,8 @@ module ALU
 	output reg True,
 	output reg signed [31:0] Result,
 	input Fast_Clock,
-	input signed [31:0] Data_1,
-	input signed [31:0] Data_2,
+	input signed [31:0] Op1,
+	input signed [31:0] Op2,
 	input [4:0] ALU_Op
 );
 
@@ -14,73 +14,73 @@ begin
 	
 		0:		//ADD
 		begin
-			Result = Data_1 + Data_2;
+			Result = Op1 + Op2;
 			True = 0;
 		end
 	
 		1:		//SUB
 		begin
-			Result = Data_1 - Data_2;
+			Result = Op1 - Op2;
 			True = 0;
 		end
 		
 		2:		//MUL
 		begin
-			Result = Data_1 * Data_2;
+			Result = Op1 * Op2;
 			True = 0;
 		end
 		
 		3:		//DIV
 		begin
-			Result = Data_1 / Data_2;
+			Result = Op1 / Op2;
 			True = 0;
 		end
 		
 		4:		//MOD
 		begin
-			Result = Data_1 % Data_2;
+			Result = Op1 % Op2;
 			True = 0;
 		end
 		
 		5:		//AND
 		begin
-			Result = Data_1 & Data_2;
+			Result = Op1 & Op2;
 			True = 0;
 		end
 		
 		6:		//OR
 		begin
-			Result = Data_1 | Data_2;
+			Result = Op1 | Op2;
 			True = 0;
 		end
 		
 		7:		//XOR
 		begin
-			Result = Data_1 ^ Data_2;
+			Result = Op1 ^ Op2;
 			True = 0;
 		end
 		
 		8:		//NOT
 		begin
-			Result = ~Data_1;
+			Result = ~Op1;
 			True = 0;
 		end
 		
 		9:		//Shift Left
 		begin
-			Result = Data_1 <<< Data_2;
+			Result = Op1 <<< Op2;
 			True = 0;
 		end
 		
 		10:	//Shift Right
 		begin
-			Result = Data_1 >>> Data_2;
+			Result = Op1 >>> Op2;
 			True = 0;
 		end
 		
 		11:	//Equal
 		begin
-			if (Data_1 == Data_2)
+			if (Op1 == Op2)
 			begin
 				Result = 1;
 				True = 1;
@@ -94,7 +94,7 @@ begin
 		
 		12:	//Not Equal
 		begin
-			if (Data_1 != Data_2)
+			if (Op1 != Op2)
 			begin
 				Result = 1;
 				True = 1;
@@ -108,7 +108,7 @@ begin
 		
 		13:	//Greater or Equal
 		begin
-			if (Data_1 >= Data_2)
+			if (Op1 >= Op2)
 			begin
 				Result = 1;
 				True = 1;
@@ -122,7 +122,7 @@ begin
 		
 		14:	//Greater
 		begin
-			if (Data_1 > Data_2)
+			if (Op1 > Op2)
 			begin
 				Result = 1;
 				True = 1;
@@ -136,7 +136,7 @@ begin
 		
 		15:	//Less or Equal
 		begin
-			if (Data_1 <= Data_2)
+			if (Op1 <= Op2)
 			begin
 				Result = 1;
 				True = 1;
@@ -150,7 +150,7 @@ begin
 		
 		16:	//Less
 		begin
-			if (Data_1 < Data_2)
+			if (Op1 < Op2)
 			begin
 				Result = 1;
 				True = 1;
@@ -170,7 +170,7 @@ begin
 		
 		18:	//IMM
 		begin
-			Result = Data_2;
+			Result = Op2;
 			True = 0;
 		end
 		
