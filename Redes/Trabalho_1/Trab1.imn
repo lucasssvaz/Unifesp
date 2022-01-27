@@ -1,0 +1,801 @@
+node n1 {
+    type router
+    model router
+    network-config {
+	hostname ISPR-1
+	!
+	interface eth2
+	 ip address 10.0.7.1/24
+	 ipv6 address 2001:7::1/64
+	!
+	interface eth1
+	 ip address 10.0.1.1/24
+	 ipv6 address 2001:1::1/64
+	!
+	interface eth0
+	 ip address 10.0.0.1/24
+	 ipv6 address 2001:0::1/64
+	!
+    }
+    canvas c1
+    iconcoords {453.0 348.0}
+    labelcoords {404.0 366.0}
+    interface-peer {eth0 n2}
+    interface-peer {eth1 n3}
+    interface-peer {eth2 n7}
+}
+
+node n2 {
+    type router
+    model router
+    network-config {
+	hostname ISPR-3
+	!
+	interface eth2
+	 ip address 10.0.3.1/24
+	 ipv6 address 2001:3::1/64
+	!
+	interface eth1
+	 ip address 10.0.2.2/24
+	 ipv6 address 2001:2::2/64
+	!
+	interface eth0
+	 ip address 10.0.0.2/24
+	 ipv6 address 2001:0::2/64
+	!
+    }
+    canvas c1
+    iconcoords {622.0 430.0}
+    labelcoords {628.0 464.0}
+    interface-peer {eth0 n1}
+    interface-peer {eth1 n3}
+    interface-peer {eth2 n5}
+}
+
+node n3 {
+    type router
+    model router
+    network-config {
+	hostname ISPR-2
+	!
+	interface eth2
+	 ip address 10.0.9.1/24
+	 ipv6 address 2001:9::1/64
+	!
+	interface eth1
+	 ip address 10.0.2.1/24
+	 ipv6 address 2001:2::1/64
+	!
+	interface eth0
+	 ip address 10.0.1.2/24
+	 ipv6 address 2001:1::2/64
+	!
+    }
+    canvas c1
+    iconcoords {451.0 508.0}
+    labelcoords {477.0 541.0}
+    interface-peer {eth0 n1}
+    interface-peer {eth1 n2}
+    interface-peer {eth2 n8}
+}
+
+node n4 {
+    type router
+    model router
+    network-config {
+	hostname ISPR-5
+	!
+	interface eth2
+	 ip address 10.0.13.1/24
+	 ipv6 address 2001:13::1/64
+	!
+	interface eth1
+	 ip address 10.0.6.2/24
+	 ipv6 address 2001:6::2/64
+	!
+	interface eth0
+	 ip address 10.0.4.2/24
+	 ipv6 address 2001:4::2/64
+	!
+    }
+    canvas c1
+    iconcoords {1226.0 315.0}
+    labelcoords {1276.0 334.0}
+    interface-peer {eth0 n5}
+    interface-peer {eth1 n6}
+    interface-peer {eth2 n10}
+}
+
+node n5 {
+    type router
+    model router
+    network-config {
+	hostname ISPR-4
+	!
+	interface eth2
+	 ip address 10.0.5.1/24
+	 ipv6 address 2001:5::1/64
+	!
+	interface eth1
+	 ip address 10.0.4.1/24
+	 ipv6 address 2001:4::1/64
+	!
+	interface eth0
+	 ip address 10.0.3.2/24
+	 ipv6 address 2001:3::2/64
+	!
+    }
+    canvas c1
+    iconcoords {1018.0 429.0}
+    labelcoords {987.0 467.0}
+    interface-peer {eth0 n2}
+    interface-peer {eth1 n4}
+    interface-peer {eth2 n6}
+}
+
+node n6 {
+    type router
+    model router
+    network-config {
+	hostname ISPR-6
+	!
+	interface eth2
+	 ip address 10.0.11.1/24
+	 ipv6 address 2001:11::1/64
+	!
+	interface eth1
+	 ip address 10.0.6.1/24
+	 ipv6 address 2001:6::1/64
+	!
+	interface eth0
+	 ip address 10.0.5.2/24
+	 ipv6 address 2001:5::2/64
+	!
+    }
+    canvas c1
+    iconcoords {1226.0 533.0}
+    labelcoords {1279.0 539.0}
+    interface-peer {eth0 n5}
+    interface-peer {eth1 n4}
+    interface-peer {eth2 n9}
+}
+
+node n7 {
+    type router
+    model router
+    network-config {
+	hostname IR-1
+	!
+	interface eth1
+	 ip address 10.0.8.1/24
+	 ipv6 address 2001:8::1/64
+	!
+	interface eth0
+	 ip address 10.0.7.2/24
+	 ipv6 address 2001:7::2/64
+	!
+    }
+    canvas c1
+    iconcoords {253.0 238.0}
+    labelcoords {216.0 260.0}
+    interface-peer {eth0 n1}
+    interface-peer {eth1 n20}
+}
+
+node n8 {
+    type router
+    model router
+    network-config {
+	hostname DR-1
+	!
+	interface eth1
+	 ip address 10.0.10.1/24
+	 ipv6 address 2001:10::1/64
+	!
+	interface eth0
+	 ip address 10.0.9.2/24
+	 ipv6 address 2001:9::2/64
+	!
+    }
+    canvas c1
+    iconcoords {256.0 652.0}
+    labelcoords {217.0 644.0}
+    interface-peer {eth0 n3}
+    interface-peer {eth1 n19}
+}
+
+node n9 {
+    type router
+    model router
+    network-config {
+	hostname DR-2
+	!
+	interface eth1
+	 ip address 10.0.12.1/24
+	 ipv6 address 2001:12::1/64
+	!
+	interface eth0
+	 ip address 10.0.11.2/24
+	 ipv6 address 2001:11::2/64
+	!
+    }
+    canvas c1
+    iconcoords {1127.0 700.0}
+    labelcoords {1170.0 707.0}
+    interface-peer {eth0 n6}
+    interface-peer {eth1 n22}
+}
+
+node n10 {
+    type router
+    model router
+    network-config {
+	hostname IR-2
+	!
+	interface eth1
+	 ip address 10.0.14.1/24
+	 ipv6 address 2001:14::1/64
+	!
+	interface eth0
+	 ip address 10.0.13.2/24
+	 ipv6 address 2001:13::2/64
+	!
+    }
+    canvas c1
+    iconcoords {1341.0 197.0}
+    labelcoords {1381.0 222.0}
+    interface-peer {eth0 n4}
+    interface-peer {eth1 n21}
+}
+
+node n11 {
+    type router
+    model host
+    network-config {
+	hostname IS-2
+	!
+	interface eth0
+	 ip address 10.0.8.10/24
+	 ipv6 address 2001:8::10/64
+	!
+    }
+    canvas c1
+    iconcoords {395.0 82.0}
+    labelcoords {406.0 120.0}
+    interface-peer {eth0 n20}
+}
+
+node n12 {
+    type router
+    model host
+    network-config {
+	hostname IS-1
+	!
+	interface eth0
+	 ip address 10.0.8.11/24
+	 ipv6 address 2001:8::11/64
+	!
+    }
+    canvas c1
+    iconcoords {135.0 85.0}
+    labelcoords {124.0 126.0}
+    interface-peer {eth0 n20}
+}
+
+node n13 {
+    type router
+    model host
+    network-config {
+	hostname IS-3
+	!
+	interface eth0
+	 ip address 10.0.14.10/24
+	 ipv6 address 2001:14::10/64
+	!
+    }
+    canvas c1
+    iconcoords {1205.0 62.0}
+    labelcoords {1182.0 98.0}
+    interface-peer {eth0 n21}
+}
+
+node n14 {
+    type router
+    model host
+    network-config {
+	hostname IS-4
+	!
+	interface eth0
+	 ip address 10.0.14.11/24
+	 ipv6 address 2001:14::11/64
+	!
+    }
+    canvas c1
+    iconcoords {1478.0 56.0}
+    labelcoords {1472.0 101.0}
+    interface-peer {eth0 n21}
+}
+
+node n15 {
+    type router
+    model PC
+    network-config {
+	hostname DD-1
+	!
+	interface eth0
+	 ip address 10.0.10.21/24
+	 ipv6 address 2001:10::21/64
+	!
+    }
+    canvas c1
+    iconcoords {91.0 795.0}
+    labelcoords {78.0 834.0}
+    interface-peer {eth0 n19}
+}
+
+node n16 {
+    type router
+    model PC
+    network-config {
+	hostname DD-2
+	!
+	interface eth0
+	 ip address 10.0.10.20/24
+	 ipv6 address 2001:10::20/64
+	!
+    }
+    canvas c1
+    iconcoords {324.0 818.0}
+    labelcoords {363.0 829.0}
+    interface-peer {eth0 n19}
+}
+
+node n17 {
+    type router
+    model PC
+    network-config {
+	hostname DD-3
+	!
+	interface eth0
+	 ip address 10.0.12.20/24
+	 ipv6 address 2001:12::20/64
+	!
+    }
+    canvas c1
+    iconcoords {1137.0 843.0}
+    labelcoords {1117.0 882.0}
+    interface-peer {eth0 n22}
+}
+
+node n18 {
+    type router
+    model PC
+    network-config {
+	hostname DD-4
+	!
+	interface eth0
+	 ip address 10.0.12.21/24
+	 ipv6 address 2001:12::21/64
+	!
+    }
+    canvas c1
+    iconcoords {1420.0 851.0}
+    labelcoords {1391.0 884.0}
+    interface-peer {eth0 n22}
+}
+
+node n19 {
+    type lanswitch
+    network-config {
+	hostname DSW-1
+	!
+    }
+    canvas c1
+    iconcoords {255.0 739.0}
+    labelcoords {296.0 734.0}
+    interface-peer {e0 n8}
+    interface-peer {e1 n16}
+    interface-peer {e2 n15}
+}
+
+node n20 {
+    type lanswitch
+    network-config {
+	hostname ISW-1
+	!
+    }
+    canvas c1
+    iconcoords {252.0 148.0}
+    labelcoords {287.0 168.0}
+    interface-peer {e0 n7}
+    interface-peer {e1 n11}
+    interface-peer {e2 n12}
+}
+
+node n21 {
+    type lanswitch
+    network-config {
+	hostname ISW-2
+	!
+    }
+    canvas c1
+    iconcoords {1341.0 112.0}
+    labelcoords {1376.0 136.0}
+    interface-peer {e0 n10}
+    interface-peer {e1 n13}
+    interface-peer {e2 n14}
+}
+
+node n22 {
+    type lanswitch
+    network-config {
+	hostname DSW-2
+	!
+    }
+    canvas c1
+    iconcoords {1277.0 775.0}
+    labelcoords {1324.0 777.0}
+    interface-peer {e0 n9}
+    interface-peer {e1 n17}
+    interface-peer {e2 n18}
+}
+
+link l1 {
+    delay 7000
+    nodes {n1 n2}
+    bandwidth 0
+}
+
+link l2 {
+    delay 10000
+    nodes {n1 n3}
+    bandwidth 0
+}
+
+link l3 {
+    delay 8000
+    nodes {n3 n2}
+    bandwidth 0
+}
+
+link l4 {
+    delay 50000
+    nodes {n2 n5}
+    bandwidth 0
+}
+
+link l5 {
+    delay 12000
+    nodes {n5 n4}
+    bandwidth 0
+}
+
+link l6 {
+    delay 10000
+    nodes {n5 n6}
+    bandwidth 0
+}
+
+link l7 {
+    delay 15000
+    nodes {n6 n4}
+    bandwidth 0
+}
+
+link l8 {
+    delay 2500
+    nodes {n1 n7}
+    bandwidth 1000000000
+}
+
+link l9 {
+    nodes {n7 n20}
+    bandwidth 0
+}
+
+link l10 {
+    nodes {n20 n11}
+    bandwidth 0
+}
+
+link l11 {
+    nodes {n20 n12}
+    bandwidth 0
+}
+
+link l12 {
+    delay 10000
+    nodes {n3 n8}
+    bandwidth 10000000
+}
+
+link l13 {
+    nodes {n8 n19}
+}
+
+link l14 {
+    nodes {n19 n16}
+    bandwidth 0
+}
+
+link l15 {
+    nodes {n19 n15}
+    bandwidth 0
+}
+
+link l16 {
+    ber 1
+    delay 5000
+    nodes {n6 n9}
+    bandwidth 100000000
+}
+
+link l17 {
+    nodes {n9 n22}
+    bandwidth 0
+}
+
+link l18 {
+    nodes {n22 n17}
+    bandwidth 0
+}
+
+link l19 {
+    nodes {n22 n18}
+    bandwidth 0
+}
+
+link l20 {
+    delay 3000
+    nodes {n4 n10}
+    bandwidth 1000000000
+}
+
+link l21 {
+    nodes {n10 n21}
+    bandwidth 0
+}
+
+link l22 {
+    nodes {n21 n13}
+    bandwidth 0
+}
+
+link l23 {
+    nodes {n21 n14}
+    bandwidth 0
+}
+
+annotation a1 {
+    iconcoords {74.0 13.0 445.0 278.0}
+    type rectangle
+    label {Institutional Network A}
+    labelcolor black
+    fontfamily {Arial}
+    fontsize {12}
+    color #C0C0FF
+    width 0
+    border black
+    rad 25
+    canvas c1
+}
+
+annotation a2 {
+    iconcoords {326.0 298.0 681.0 548.0}
+    type rectangle
+    label {ISP A}
+    labelcolor black
+    fontfamily {Arial}
+    fontsize {12}
+    color #c0c040
+    width 0
+    border black
+    rad 25
+    canvas c1
+}
+
+annotation a3 {
+    iconcoords {20 562 437 863}
+    type rectangle
+    label {Domestic Network A}
+    labelcolor black
+    fontfamily {Arial}
+    fontsize {12}
+    color #84c833
+    width 0
+    border black
+    rad 25
+    canvas c1
+}
+
+annotation a4 {
+    iconcoords {902 261 1349 589}
+    type rectangle
+    label {ISP B}
+    labelcolor black
+    fontfamily {Arial}
+    fontsize {12}
+    color #569cff
+    width 0
+    border black
+    rad 25
+    canvas c1
+}
+
+annotation a5 {
+    iconcoords {1150.0 13.0 1518.0 250.0}
+    type rectangle
+    label {Institutional Network B}
+    labelcolor black
+    fontfamily {Arial}
+    fontsize {12}
+    color #c06e31
+    width 0
+    border black
+    rad 25
+    canvas c1
+}
+
+annotation a6 {
+    iconcoords {1085 603 1500 889}
+    type rectangle
+    label {Domestic Network B}
+    labelcolor black
+    fontfamily {Arial}
+    fontsize {12}
+    color #e45091
+    width 0
+    border black
+    rad 25
+    canvas c1
+}
+
+annotation a7 {
+    iconcoords {792.0 416.0}
+    type text
+    label {Internet}
+    labelcolor black
+    fontfamily {Arial}
+    fontsize {12}
+    effects {bold}
+    canvas c1
+}
+
+annotation a8 {
+    type text
+    iconcoords {832.0 380.0}
+    label {}
+    canvas c1
+}
+
+annotation a9 {
+    iconcoords {1538.0 776.0}
+    type text
+    label {Labels:}
+    labelcolor black
+    fontfamily {Arial}
+    fontsize {12}
+    canvas c1
+}
+
+annotation a10 {
+    type text
+    iconcoords {1662.0 793.0}
+    label {}
+    canvas c1
+}
+
+annotation a11 {
+    iconcoords {1538.0 792.0}
+    type text
+    label {DD - Domestic Device}
+    labelcolor black
+    fontfamily {Arial}
+    fontsize {12}
+    canvas c1
+}
+
+annotation a12 {
+    type text
+    iconcoords {1602.0 807.0}
+    label {}
+    canvas c1
+}
+
+annotation a13 {
+    iconcoords {1538.0 808.0}
+    type text
+    label {DSW - Domestic Switch}
+    labelcolor black
+    fontfamily {Arial}
+    fontsize {12}
+    canvas c1
+}
+
+annotation a14 {
+    iconcoords {1538.0 825.0}
+    type text
+    label {DR - Domestic Router}
+    labelcolor black
+    fontfamily {Arial}
+    fontsize {12}
+    canvas c1
+}
+
+annotation a15 {
+    type text
+    iconcoords {1588.0 740.0}
+    label {}
+    canvas c1
+}
+
+annotation a16 {
+    iconcoords {1538.0 841.0}
+    type text
+    label {ISPR - ISP Router}
+    labelcolor black
+    fontfamily {Arial}
+    fontsize {12}
+    canvas c1
+}
+
+annotation a17 {
+    iconcoords {1538.0 857.0}
+    type text
+    label {IR - Institutional Router}
+    labelcolor black
+    fontfamily {Arial}
+    fontsize {12}
+    canvas c1
+}
+
+annotation a18 {
+    iconcoords {1538.0 874.0}
+    type text
+    label {ISW - Institutional Switch}
+    labelcolor black
+    fontfamily {Arial}
+    fontsize {12}
+    canvas c1
+}
+
+annotation a19 {
+    iconcoords {1539.0 890.0}
+    type text
+    label {IS - Institutional Server}
+    labelcolor black
+    fontfamily {Arial}
+    fontsize {12}
+    canvas c1
+}
+
+annotation a20 {
+    type text
+    iconcoords {1602.0 799.0}
+    label {}
+    canvas c1
+}
+
+canvas c1 {
+    name {Canvas1}
+    refpt {0 0 47.5791667 -122.132322 2.0}
+    scale {150.0}
+    size {1750 900}
+}
+
+option global {
+    interface_names no
+    ip_addresses yes
+    ipv6_addresses no
+    node_labels yes
+    link_labels yes
+    show_api no
+    background_images no
+    annotations yes
+    grid yes
+    traffic_start 0
+}
+
+option session {
+}
+
