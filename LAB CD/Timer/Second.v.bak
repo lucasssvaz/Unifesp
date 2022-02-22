@@ -1,9 +1,0 @@
-reg [1:0] d;
-wire [1:0] dInc = d[1] ? (1) : (1 - 50000000);
-wire [1:0] dN = d + dInc;
-always @(posedge sys_clk_i)
-begin
-  d = dN;
-end
-wire b_clk = ~d[1];
-

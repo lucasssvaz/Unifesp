@@ -112,14 +112,19 @@ static void insertNode( TreeNode * t){
 					}
 				}
 				break;
-			case ativK: 
-			if (st_lookup(t->attr.name) == -1 && strcmp(t->attr.name, "input")!=0 && strcmp(t->attr.name, "output")!=0 && strcmp(t->attr.name, "recuperaPC")!=0 && strcmp(t->attr.name, "HDtoMI")!=0
-				&& strcmp(t->attr.name, "enderecoBase")!=0 && strcmp(t->attr.name, "storeReg")!=0&& strcmp(t->attr.name, "loadReg")!=0 && strcmp(t->attr.name, "setandoPC")!=0
-				&& strcmp(t->attr.name, "inputDoContexto")!=0 && strcmp(t->attr.name, "outputDoContexto")!=0 && strcmp(t->attr.name, "execucaoDoProcesso")!=0 && strcmp(t->attr.name, "pegaInterrupcao")!=0)
-			{   
-				fprintf(listing,"Linha %d - Erro: A funcao %s nao foi declarada.\n", t->lineno, t->attr.name);
-				st_insert(t->attr.name,t->lineno,0,escopo,NULLL,CALL, t->vet);
-				Error = TRUE;
+			case ativK:
+				if (st_lookup(t->attr.name) == -1 &&
+					strcmp(t->attr.name, "input") != 0 &&
+					strcmp(t->attr.name, "output") != 0 &&
+					strcmp(t->attr.name, "loadReg") != 0 &&
+					strcmp(t->attr.name, "saveReg") != 0 &&
+					strcmp(t->attr.name, "yield") != 0 &&
+					strcmp(t->attr.name, "sleep") != 0 &&
+					strcmp(t->attr.name, "changeContext") != 0)
+				{
+					fprintf(listing, "Linha %d - Erro: A funcao %s nao foi declarada.\n", t->lineno, t->attr.name);
+					st_insert(t->attr.name, t->lineno, 0, escopo, NULLL, CALL, t->vet);
+					Error = TRUE;
 			}
 			else {
 				st_insert(t->attr.name,t->lineno,0,escopo,NULLL,CALL, t->vet);

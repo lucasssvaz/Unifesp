@@ -1,6 +1,8 @@
-module StackFile 
-(
-	input Reset, Slow_Clock, Stack_Write, Stack_Enable, 
+module StackFile (
+	input Reset, 
+	input Slow_Clock, 
+	input Stack_Write, 
+	input Stack_Enable, 
 	input [12:0] NPPC, 
 	output reg [12:0] Ret_Add, 
 	output reg Err_Out

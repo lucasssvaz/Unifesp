@@ -2381,6 +2381,7 @@ int yyerror(char* msg){
     fprintf(listing,"Token Atual: ");
     printToken(yychar,tokenString);
     Error = TRUE;
+    exit(1);
     return 0;
 }
 

@@ -1,31 +1,27 @@
-module IO_Module
-(
-	input Slow_Clock, Reset, Enable, IO, Confirm, Load_Proc,
-	input signed [31:0] Data_Out,
-	input signed [17:0] Raw_Input,
-	input reg [8*32-1:0] Load_Data,
-	output reg signed [31:0] Data_In,
-	output reg signed [31:0] Data_Debug,
-	output reg Interrupt,
-	output reg [6:0] Display0, Display1, Display2, Display3, Display4, Display5, Display6, Display7
+module IO_Module (
+	input Slow_Clock,
+	input Reset, 
+	input Enable, 
+	input IO, 
+	input Confirm, 
+	output reg signed [31:0] Data_In, 
+	input signed [31:0] Data_Out, 
+	output reg signed [31:0] Data_Debug, 
+	input signed [17:0] Raw_Input, 
+	output reg Interrupt, 
+	output reg [6:0] Display0, 
+	output reg [6:0] Display1, 
+	output reg [6:0] Display2, 
+	output reg [6:0] Display3, 
+	output reg [6:0] Display4, 
+	output reg [6:0] Display5, 
+	output reg [6:0] Display6, 
+	output reg [6:0] Display7
 );
 
 reg State = 0;
 wire In_Op;
 wire Out_Op;
-
-wire [31:0] in_aux[7:0];
-
-assign {
-	in_aux[7],
-	in_aux[6],
-	in_aux[5],
-	in_aux[4],
-	in_aux[3],
-	in_aux[2],
-	in_aux[1],
-	in_aux[0]
-} = Load_Data;
 
 assign Out_Op = (Enable & IO);
 assign In_Op = (Enable & (~IO));
@@ -104,7 +100,7 @@ begin
 end
 
 
-always @ (negedge Slow_Clock or posedge Reset or posedge Load_Proc)
+always @ (negedge Slow_Clock or posedge Reset)
 begin
 	if (Reset)
 	begin
@@ -116,17 +112,6 @@ begin
 		Display5 <= 7'b100_0000;
 		Display6 <= 7'b100_0000;
 		Display7 <= 7'b100_0000;
-	end
-	else if (Load_Proc)
-	begin
-		Display0 <= in_aux[0][6:0];
-		Display1 <= in_aux[1][6:0];
-		Display2 <= in_aux[2][6:0];
-		Display3 <= in_aux[3][6:0];
-		Display4 <= in_aux[4][6:0];
-		Display5 <= in_aux[5][6:0];
-		Display6 <= in_aux[6][6:0];
-		Display7 <= in_aux[7][6:0];
 	end
 	else if (Out_Op)	//WRITE OUTPUT
 	begin
@@ -140,5 +125,6 @@ begin
 		To_Display(Data_Out[3:0], Display0);
 	end
 end
+
 
 endmodule

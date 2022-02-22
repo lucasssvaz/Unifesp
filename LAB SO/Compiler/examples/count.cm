@@ -1,0 +1,12 @@
+void main(void)
+{
+    int x; int y;
+    x = 0;
+    y = 10;
+    while (x < y)
+    {
+        output(x);
+        sleep(2);
+        x = x + 1;
+    }
+}

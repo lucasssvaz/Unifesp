@@ -70,3 +70,11 @@ LAB SO/Processor/incremental_db/
 LAB SO/Processor/output_files/
 
 LAB SO/Ref/
+
+*.o
+
+LAB SO (copy 1)/
+
+*.bak
+
+LAB SO/Processor/simulation/

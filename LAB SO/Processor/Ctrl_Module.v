@@ -15,7 +15,7 @@ module Ctrl_Module
 	output reg ALU_Src,
 	output reg Halt,
 	output reg Long_Imm,
-	output reg Exec_Proc
+	output reg Change_Context
 );
 
 always @ (Instruction)
@@ -40,7 +40,7 @@ begin
 			ALU_Src = 0;
 			Halt = 0;
 			Long_Imm = 0;
-			Exec_Proc = 0;
+			Change_Context = 0;
 
 			case (Instruction[3:0])
 
@@ -170,7 +170,7 @@ begin
 			ALU_Src = 0;
 			Halt = 0;
 			Long_Imm = 0;
-			Exec_Proc = 0;
+			Change_Context = 0;
 
 			case (Instruction[3:0])
 
@@ -237,7 +237,7 @@ begin
 			ALU_Src = 1;
 			Halt = 0;
 			Long_Imm = 1;
-			Exec_Proc = 0;
+			Change_Context = 0;
 
 			case (Instruction[3:0])
 
@@ -318,7 +318,7 @@ begin
 					Stack_Write = 0;
 				end
 
-				4'b0111: //EXEC
+				4'b0111: //CTX
 				begin
 					IO_Enable = 0;
 					IO_Selection = 0;
@@ -327,7 +327,7 @@ begin
 					Jump_I = 0;
 					Stack_Enable = 0;
 					Stack_Write = 0;
-					Exec_Proc = 1;
+					Change_Context = 1;
 				end
 
 				default:
@@ -362,7 +362,7 @@ begin
 			ALU_Src = 1;
 			Halt = 0;
 			Long_Imm = 0;
-			Exec_Proc = 0;
+			Change_Context = 0;
 			
 			case (Instruction[3:0])
 
@@ -516,7 +516,6 @@ begin
 			ALU_Src = 0;
 			Halt = 0;
 			Long_Imm = 0;
-			Exec_Proc = 0;
 			
 		end
 	endcase

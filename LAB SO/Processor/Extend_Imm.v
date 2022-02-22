@@ -1,7 +1,6 @@
-module Extend_Imm 
-(
-	input signed [19:0] In_Imm, 
-	input Long_Imm, 
+module Extend_Imm (
+	input signed [19:0] In_Imm,
+	input Long_Imm,
 	output reg signed [31:0] Out_Imm
 );
 
