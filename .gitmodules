@@ -4,11 +4,11 @@
 [submodule "IC-CubeSat"]
 	path = IC-CubeSat
 	url = https://github.com/lucasssvaz/IC-CubeSat.git
-[submodule "Compiladores/Reaper_Compiler"]
-	path = Compiladores/Reaper_Compiler
+[submodule "Reaper_Compiler"]
+	path = Reaper_Compiler
 	url = https://github.com/lucasssvaz/Reaper_Compiler.git
-[submodule "LAB AOC/Reaper_Processor"]
-	path = LAB AOC/Reaper_Processor
+[submodule "Reaper_Processor"]
+	path = Reaper_Processor
 	url = https://github.com/lucasssvaz/Reaper_Processor.git
 [submodule "PCD"]
 	path = PCD
