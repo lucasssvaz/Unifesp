@@ -178,6 +178,76 @@ set_global_assignment -name VERILOG_FILE Ctrl_Module.v
 set_global_assignment -name VERILOG_FILE ClockManager.v
 set_global_assignment -name VERILOG_FILE ALU.v
 set_global_assignment -name VECTOR_WAVEFORM_FILE Waveform.vwf
-set_location_assignment PIN_G19 -to Slow_Clock
 set_location_assignment PIN_Y2 -to Fast_Clock
+set_instance_assignment -name VIRTUAL_PIN ON -to DebugAX1
+set_instance_assignment -name VIRTUAL_PIN ON -to DebugAX2
+set_instance_assignment -name VIRTUAL_PIN ON -to DebugBR
+set_instance_assignment -name VIRTUAL_PIN ON -to DebugCRT
+set_instance_assignment -name VIRTUAL_PIN ON -to DebugCTX
+set_instance_assignment -name VIRTUAL_PIN ON -to DebugGP
+set_instance_assignment -name VIRTUAL_PIN ON -to DebugJMP
+set_instance_assignment -name VIRTUAL_PIN ON -to DebugRA
+set_instance_assignment -name VIRTUAL_PIN ON -to DebugRET
+set_instance_assignment -name VIRTUAL_PIN ON -to DebugSP
+set_instance_assignment -name VIRTUAL_PIN ON -to Instruction
+set_instance_assignment -name VIRTUAL_PIN ON -to Mux_Stack_Out
+set_instance_assignment -name VIRTUAL_PIN ON -to Out_Int
+set_instance_assignment -name VIRTUAL_PIN ON -to PC
+set_instance_assignment -name VIRTUAL_PIN ON -to Proc_ID
+set_instance_assignment -name VIRTUAL_PIN ON -to Context_PC
+set_instance_assignment -name VIRTUAL_PIN ON -to DebugT0
+set_instance_assignment -name VIRTUAL_PIN ON -to DebugR0
+set_instance_assignment -name VIRTUAL_PIN ON -to DebugK7
+set_instance_assignment -name VIRTUAL_PIN ON -to DebugK8
+set_instance_assignment -name VIRTUAL_PIN ON -to DebugK9
+set_instance_assignment -name VIRTUAL_PIN ON -to DebugR1
+set_instance_assignment -name VIRTUAL_PIN ON -to DebugR2
+set_instance_assignment -name VIRTUAL_PIN ON -to DebugR3
+set_instance_assignment -name VIRTUAL_PIN ON -to DebugR4
+set_instance_assignment -name VIRTUAL_PIN ON -to DebugR5
+set_instance_assignment -name VIRTUAL_PIN ON -to DebugR6
+set_instance_assignment -name VIRTUAL_PIN ON -to DebugR7
+set_instance_assignment -name VIRTUAL_PIN ON -to DebugR8
+set_instance_assignment -name VIRTUAL_PIN ON -to DebugR9
+set_instance_assignment -name VIRTUAL_PIN ON -to DebugT1
+set_instance_assignment -name VIRTUAL_PIN ON -to DebugT2
+set_instance_assignment -name VIRTUAL_PIN ON -to DebugT3
+set_instance_assignment -name VIRTUAL_PIN ON -to DebugT4
+set_instance_assignment -name VIRTUAL_PIN ON -to DebugT5
+set_instance_assignment -name VIRTUAL_PIN ON -to DebugT6
+set_instance_assignment -name VIRTUAL_PIN ON -to DebugT7
+set_instance_assignment -name VIRTUAL_PIN ON -to DebugT8
+set_instance_assignment -name VIRTUAL_PIN ON -to DebugT9
+set_instance_assignment -name VIRTUAL_PIN ON -to DebugT10
+set_instance_assignment -name VIRTUAL_PIN ON -to DebugT11
+set_instance_assignment -name VIRTUAL_PIN ON -to DebugT12
+set_instance_assignment -name VIRTUAL_PIN ON -to DebugT13
+set_instance_assignment -name VIRTUAL_PIN ON -to DebugT14
+set_instance_assignment -name VIRTUAL_PIN ON -to DebugT15
+set_instance_assignment -name VIRTUAL_PIN ON -to DebugT16
+set_instance_assignment -name VIRTUAL_PIN ON -to DebugT17
+set_instance_assignment -name VIRTUAL_PIN ON -to DebugT18
+set_instance_assignment -name VIRTUAL_PIN ON -to DebugT19
+set_instance_assignment -name VIRTUAL_PIN ON -to DebugT20
+set_instance_assignment -name VIRTUAL_PIN ON -to DebugT21
+set_instance_assignment -name VIRTUAL_PIN ON -to DebugT22
+set_instance_assignment -name VIRTUAL_PIN ON -to DebugT23
+set_instance_assignment -name VIRTUAL_PIN ON -to DebugT24
+set_instance_assignment -name VIRTUAL_PIN ON -to DebugT25
+set_instance_assignment -name VIRTUAL_PIN ON -to DebugT26
+set_instance_assignment -name VIRTUAL_PIN ON -to DebugT27
+set_instance_assignment -name VIRTUAL_PIN ON -to DebugT28
+set_instance_assignment -name VIRTUAL_PIN ON -to DebugT29
+set_instance_assignment -name VIRTUAL_PIN ON -to DebugT30
+set_instance_assignment -name VIRTUAL_PIN ON -to DebugT31
+set_instance_assignment -name VIRTUAL_PIN ON -to DebugT32
+set_instance_assignment -name VIRTUAL_PIN ON -to DebugT33
+set_instance_assignment -name VIRTUAL_PIN ON -to DebugT34
+set_instance_assignment -name VIRTUAL_PIN ON -to DebugT35
+set_instance_assignment -name VIRTUAL_PIN ON -to DebugT36
+set_instance_assignment -name VIRTUAL_PIN ON -to DebugT37
+set_instance_assignment -name VIRTUAL_PIN ON -to DebugT38
+set_instance_assignment -name VIRTUAL_PIN ON -to DebugT39
+set_instance_assignment -name VIRTUAL_PIN ON -to DebugZERO
+set_location_assignment PIN_H19 -to Halt
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top

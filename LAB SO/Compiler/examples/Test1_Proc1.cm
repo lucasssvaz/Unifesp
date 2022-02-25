@@ -1,0 +1,26 @@
+/* 1 - 2 - 3 - 0 - A - 4 - 5 - 1 */
+
+int soma(int a, int b){
+    int result;
+    result = a + b;
+
+    output(2);
+    sleep(2);
+
+    yield();
+
+    return result;
+}
+
+void main(void){
+    int a;
+    int b;
+    a = 5;
+    b = 5;
+
+    output(soma(a,b));
+    sleep(2);
+
+    output(4);
+    sleep(2);
+}

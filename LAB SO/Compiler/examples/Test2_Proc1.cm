@@ -1,0 +1,13 @@
+void main(void)
+{
+    int x; int y;
+    x = 0;
+    y = 10;
+    while (x < y)
+    {
+        output(4096+x);
+        sleep(1);
+        yield();
+        x = x + 1;
+    }
+}

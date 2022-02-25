@@ -1,0 +1,13 @@
+
+*.bak
+
+db/
+
+incremental_db/compiled_partitions/
+
+incremental_db/
+
+output_files/
+
+simulation/
+*.mp4

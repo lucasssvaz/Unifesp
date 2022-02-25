@@ -297,11 +297,9 @@ static void ExpNode(TreeNode *tree)
                 mainLocation = location;
             if ((strcmp(tree->attr.name, "input") != 0) &&
                 (strcmp(tree->attr.name, "output") != 0) &&
-                (strcmp(tree->attr.name, "saveReg") != 0) &&
-                (strcmp(tree->attr.name, "loadReg") != 0) &&
                 (strcmp(tree->attr.name, "yield") != 0) &&
                 (strcmp(tree->attr.name, "sleep") != 0) &&
-                (strcmp(tree->attr.name, "changeContext") != 0))
+                (strcmp(tree->attr.name, "execProc") != 0))
             {
                 InsertQuad(opFUN, CreateAddrString(tree->attr.name, tree->scope), empty, empty);
                 // params

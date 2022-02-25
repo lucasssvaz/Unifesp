@@ -78,3 +78,5 @@ LAB SO (copy 1)/
 *.bak
 
 LAB SO/Processor/simulation/
+
+*.code-workspace

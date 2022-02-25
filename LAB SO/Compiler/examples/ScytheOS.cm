@@ -1,0 +1,36 @@
+void main(void)
+{
+    int procID[3];
+    int procRet[3];
+    int i;
+    int procDone;
+
+    procID[0] = 1;
+    procID[1] = 2;
+    procID[2] = 3;
+
+    procRet[0] = 0;
+    procRet[1] = 0;
+    procRet[2] = 0;
+
+    procDone = 0;
+
+    while (procDone < 3)
+    {
+        i = 0;
+
+        while (i < 3)
+        {
+
+            if (procRet[i] == 0)
+            {
+                output(procID[i]);
+                sleep(2);
+                procRet[i] = execProc(procID[i]);
+                procDone = procDone + procRet[i];
+            }
+
+            i = i + 1;
+        }
+    }
+}

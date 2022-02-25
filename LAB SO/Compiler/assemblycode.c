@@ -486,27 +486,20 @@ void generateInstruction(QuadList l)
 
         case opCALL: //funciona junto com o ret
 
-            if (strcmp(a2.contents.var.name, "changeContext") == 0)
+            if (strcmp(a2.contents.var.name, "execProc") == 0)
             {
-                instructionFormat3(li, $crt, 0, NULL);
-                instructionFormat3(ctx, getParamReg()-1, 0, NULL);
-                instructionFormat2(move, getReg(a1.contents.var.name), $crt, 0, NULL);
-            }
-            else if(strcmp(a2.contents.var.name, "saveReg") == 0)
-            {
-                instructionFormat3(li, $ax1, nmem, NULL);
-                instructionFormat1(mul, $ax1, $ctx, $ax1);
+                instructionFormat2(move, $ax2, getParamReg() - 1, 0, NULL);
 
-                for (int i = 1; i < 63; ++i)
-                    instructionFormat2(sw, i, $ax1, i, NULL);
-            }
-            else if(strcmp(a2.contents.var.name, "loadReg") == 0)
-            {
-                instructionFormat3(li, $ax1, nmem, NULL);
-                instructionFormat1(mul, $ax1, getParamReg()-1, $ax1);
+                for (int i = 1; i < 61; ++i)
+                    instructionFormat2(sw, i, $zero, i, NULL);
 
-                for (int i = 1; i < 63; ++i)
+                instructionFormat3(li, $ax1, nmem, NULL);
+                instructionFormat1(mul, $ax1, $ax2, $ax1);
+                for (int i = 1; i < 61; ++i)
                     instructionFormat2(lw, i, $ax1, i, NULL);
+
+                instructionFormat3(ctx, $ax2, 0, NULL);
+                instructionFormat2(move, getReg(a1.contents.var.name), $crt, 0, NULL);
             }
             else if (strcmp(a2.contents.var.name, "input") == 0)
             {
@@ -516,11 +509,11 @@ void generateInstruction(QuadList l)
             {
                 instructionFormat3(li, $ax1, nmem, NULL);
                 instructionFormat1(mul, $ax1, $ctx, $ax1);
-                for (int i = 1; i < 63; ++i)
+                for (int i = 1; i < 61; ++i)
                     instructionFormat2(sw, i, $ax1, i, NULL);
                 
                 instructionFormat3(li, $ax1, $zero, NULL);
-                for (int i = 1; i < 63; ++i)
+                for (int i = 1; i < 61; ++i)
                     instructionFormat2(lw, i, $ax1, i, NULL);
 
                 instructionFormat3(li, $crt, 0, NULL);
@@ -571,13 +564,12 @@ void generateInstruction(QuadList l)
         case opHLT:     // halt alterado
             insertLabel("end");
 
-            instructionFormat3(li, $crt, 1, NULL);
-
             if (progloc > 0)
             {
-                for (int i = 1; i < 63; ++i)
+                for (int i = 1; i < 61; ++i)
                     instructionFormat2(lw, i, $zero, i, NULL);
-                
+
+                instructionFormat3(li, $crt, 1, NULL);
                 instructionFormat3(ctx, $zero, 0, NULL);
             }    
             else

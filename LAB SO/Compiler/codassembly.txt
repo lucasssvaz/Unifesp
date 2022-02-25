@@ -1,275 +1,250 @@
 
-Codigo Assembly do examples/Proc1_Test2.txt:
+Codigo Assembly do examples/Test2_OS.cm:
 
-512:	li $ctx, 1
-513:	li $sp, 328
-514:	li $gp, 392
-515:	li $ra, 448
-516:	j 674
-.soma
-517:	sw $r0, $sp, 0
-518:	sw $r1, $sp, 1
-519:	lw $t0, $sp, 2
-520:	lw $t1, $sp, 0
-521:	lw $t2, $sp, 1
-522:	add $t3, $t1, $t2
-523:	move $t0, $t3
-524:	sw $t0, $sp, 2
-525:	li $t4, 2
-526:	move $r0, $t4
-527:	out $r0
-528:	nop
-529:	li $t6, 2
-530:	move $r0, $t6
-531:	li $ax2, 10000
-532:	mul $ax1, $r0, $ax2
-533:	li $br, 535
-534:	li $ax2, 6
-535:	addi $ax2, $ax2, 2
-536:	blt $br, $ax2, $ax1
-537:	li $ax1, 256
-538:	mul $ax1, $ctx, $ax1
-539:	sw $t0, $ax1, 1
-540:	sw $t1, $ax1, 2
-541:	sw $t2, $ax1, 3
-542:	sw $t3, $ax1, 4
-543:	sw $t4, $ax1, 5
-544:	sw $t5, $ax1, 6
-545:	sw $t6, $ax1, 7
-546:	sw $t7, $ax1, 8
-547:	sw $t8, $ax1, 9
-548:	sw $t9, $ax1, 10
-549:	sw $t10, $ax1, 11
-550:	sw $t11, $ax1, 12
-551:	sw $t12, $ax1, 13
-552:	sw $t13, $ax1, 14
-553:	sw $t14, $ax1, 15
-554:	sw $t15, $ax1, 16
-555:	sw $t16, $ax1, 17
-556:	sw $t17, $ax1, 18
-557:	sw $t18, $ax1, 19
-558:	sw $t19, $ax1, 20
-559:	sw $t20, $ax1, 21
-560:	sw $t21, $ax1, 22
-561:	sw $t22, $ax1, 23
-562:	sw $t23, $ax1, 24
-563:	sw $t24, $ax1, 25
-564:	sw $t25, $ax1, 26
-565:	sw $t26, $ax1, 27
-566:	sw $t27, $ax1, 28
-567:	sw $t28, $ax1, 29
-568:	sw $t29, $ax1, 30
-569:	sw $t30, $ax1, 31
-570:	sw $t31, $ax1, 32
-571:	sw $t32, $ax1, 33
-572:	sw $t33, $ax1, 34
-573:	sw $t34, $ax1, 35
-574:	sw $t35, $ax1, 36
-575:	sw $t36, $ax1, 37
-576:	sw $t37, $ax1, 38
-577:	sw $t38, $ax1, 39
-578:	sw $t39, $ax1, 40
-579:	sw $r0, $ax1, 41
-580:	sw $r1, $ax1, 42
-581:	sw $r2, $ax1, 43
-582:	sw $r3, $ax1, 44
-583:	sw $r4, $ax1, 45
-584:	sw $r5, $ax1, 46
-585:	sw $r6, $ax1, 47
-586:	sw $r7, $ax1, 48
-587:	sw $r8, $ax1, 49
-588:	sw $r9, $ax1, 50
-589:	sw $sp, $ax1, 51
-590:	sw $gp, $ax1, 52
-591:	sw $jmp, $ax1, 53
-592:	sw $ra, $ax1, 54
-593:	sw $ret, $ax1, 55
-594:	sw $br, $ax1, 56
-595:	sw $ctx, $ax1, 57
-596:	sw $k7, $ax1, 58
-597:	sw $k8, $ax1, 59
-598:	sw $k9, $ax1, 60
-599:	sw $ax1, $ax1, 61
-600:	sw $ax2, $ax1, 62
-601:	li $ax1, 0
-602:	lw $t0, $ax1, 1
-603:	lw $t1, $ax1, 2
-604:	lw $t2, $ax1, 3
-605:	lw $t3, $ax1, 4
-606:	lw $t4, $ax1, 5
-607:	lw $t5, $ax1, 6
-608:	lw $t6, $ax1, 7
-609:	lw $t7, $ax1, 8
-610:	lw $t8, $ax1, 9
-611:	lw $t9, $ax1, 10
-612:	lw $t10, $ax1, 11
-613:	lw $t11, $ax1, 12
-614:	lw $t12, $ax1, 13
-615:	lw $t13, $ax1, 14
-616:	lw $t14, $ax1, 15
-617:	lw $t15, $ax1, 16
-618:	lw $t16, $ax1, 17
-619:	lw $t17, $ax1, 18
-620:	lw $t18, $ax1, 19
-621:	lw $t19, $ax1, 20
-622:	lw $t20, $ax1, 21
-623:	lw $t21, $ax1, 22
-624:	lw $t22, $ax1, 23
-625:	lw $t23, $ax1, 24
-626:	lw $t24, $ax1, 25
-627:	lw $t25, $ax1, 26
-628:	lw $t26, $ax1, 27
-629:	lw $t27, $ax1, 28
-630:	lw $t28, $ax1, 29
-631:	lw $t29, $ax1, 30
-632:	lw $t30, $ax1, 31
-633:	lw $t31, $ax1, 32
-634:	lw $t32, $ax1, 33
-635:	lw $t33, $ax1, 34
-636:	lw $t34, $ax1, 35
-637:	lw $t35, $ax1, 36
-638:	lw $t36, $ax1, 37
-639:	lw $t37, $ax1, 38
-640:	lw $t38, $ax1, 39
-641:	lw $t39, $ax1, 40
-642:	lw $r0, $ax1, 41
-643:	lw $r1, $ax1, 42
-644:	lw $r2, $ax1, 43
-645:	lw $r3, $ax1, 44
-646:	lw $r4, $ax1, 45
-647:	lw $r5, $ax1, 46
-648:	lw $r6, $ax1, 47
-649:	lw $r7, $ax1, 48
-650:	lw $r8, $ax1, 49
-651:	lw $r9, $ax1, 50
-652:	lw $sp, $ax1, 51
-653:	lw $gp, $ax1, 52
-654:	lw $jmp, $ax1, 53
-655:	lw $ra, $ax1, 54
-656:	lw $ret, $ax1, 55
-657:	lw $br, $ax1, 56
-658:	lw $ctx, $ax1, 57
-659:	lw $k7, $ax1, 58
-660:	lw $k8, $ax1, 59
-661:	lw $k9, $ax1, 60
-662:	lw $ax1, $ax1, 61
-663:	lw $ax2, $ax1, 62
-664:	li $crt, 0
-665:	ctx $zero
-666:	lw $t9, $sp, 2
-667:	move $ret, $t9
-668:	addi $ra, $ra, -1
-669:	lw $jmp, $ra, 0
-670:	jr $jmp
-671:	addi $ra, $ra, -1
-672:	lw $jmp, $ra, 0
-673:	jr $jmp
+0:	li $ctx, 0
+1:	li $sp, 72
+2:	li $gp, 136
+3:	li $ra, 192
+4:	j 5
 .main
-674:	lw $t10, $sp, 0
-675:	li $t11, 5
-676:	move $t10, $t11
-677:	sw $t10, $sp, 0
-678:	lw $t12, $sp, 1
-679:	li $t13, 5
-680:	move $t12, $t13
-681:	sw $t12, $sp, 1
-682:	lw $t14, $sp, 0
-683:	move $r0, $t14
-684:	lw $t15, $sp, 1
-685:	move $r1, $t15
-686:	addi $sp, $sp, 2
-687:	li $jmp, 691
-688:	sw $jmp, $ra, 0
-689:	addi $ra, $ra, 1
-690:	j 517
-691:	move $t16, $ret
-692:	addi $sp, $sp, -2
-693:	move $r0, $t16
-694:	out $r0
-695:	nop
-696:	li $t18, 2
-697:	move $r0, $t18
-698:	li $ax2, 10000
-699:	mul $ax1, $r0, $ax2
-700:	li $br, 702
-701:	li $ax2, 6
-702:	addi $ax2, $ax2, 2
-703:	blt $br, $ax2, $ax1
-704:	li $t20, 4
-705:	move $r0, $t20
-706:	out $r0
-707:	nop
-708:	li $t22, 2
-709:	move $r0, $t22
-710:	li $ax2, 10000
-711:	mul $ax1, $r0, $ax2
-712:	li $br, 714
-713:	li $ax2, 6
-714:	addi $ax2, $ax2, 2
-715:	blt $br, $ax2, $ax1
-716:	j 717
+5:	li $t1, 0
+6:	add $t1, $t1, $sp
+7:	lw $t0, $t1, 0
+8:	li $t2, 1
+9:	move $t0, $t2
+10:	sw $t0, $t1, 0
+11:	li $t4, 1
+12:	add $t4, $t4, $sp
+13:	lw $t3, $t4, 0
+14:	li $t5, 2
+15:	move $t3, $t5
+16:	sw $t3, $t4, 0
+17:	li $t7, 2
+18:	add $t7, $t7, $sp
+19:	lw $t6, $t7, 0
+20:	li $t8, 3
+21:	move $t6, $t8
+22:	sw $t6, $t7, 0
+23:	li $t10, 0
+24:	add $t10, $t10, $sp
+25:	lw $t9, $t10, 3
+26:	li $t11, 0
+27:	move $t9, $t11
+28:	sw $t9, $t10, 3
+29:	li $t13, 1
+30:	add $t13, $t13, $sp
+31:	lw $t12, $t13, 3
+32:	li $t14, 0
+33:	move $t12, $t14
+34:	sw $t12, $t13, 3
+35:	li $t16, 2
+36:	add $t16, $t16, $sp
+37:	lw $t15, $t16, 3
+38:	li $t17, 0
+39:	move $t15, $t17
+40:	sw $t15, $t16, 3
+41:	lw $t18, $sp, 7
+42:	li $t19, 0
+43:	move $t18, $t19
+44:	sw $t18, $sp, 7
+.L0
+45:	lw $t20, $sp, 7
+46:	li $t21, 3
+47:	slt $t22, $t20, $t21
+48:	li $br, 233
+49:	beq $br, $t22, $zero
+50:	lw $t23, $sp, 6
+51:	li $t24, 0
+52:	move $t23, $t24
+53:	sw $t23, $sp, 6
+.L1
+54:	lw $t25, $sp, 6
+55:	li $t26, 3
+56:	slt $t27, $t25, $t26
+57:	li $br, 232
+58:	beq $br, $t27, $zero
+59:	lw $t29, $sp, 6
+60:	add $t29, $t29, $sp
+61:	lw $t28, $t29, 3
+62:	li $t30, 0
+63:	sge $t31, $t28, $t30
+64:	sle $t32, $t28, $t30
+65:	and $t33, $t31, $t32
+66:	li $br, 225
+67:	beq $br, $t33, $zero
+68:	lw $t35, $sp, 6
+69:	add $t35, $t35, $sp
+70:	lw $t34, $t35, 0
+71:	move $r0, $t34
+72:	out $r0
+73:	nop
+74:	li $t37, 2
+75:	move $r0, $t37
+76:	li $ax2, 10000
+77:	mul $ax1, $r0, $ax2
+78:	li $br, 80
+79:	li $ax2, 6
+80:	addi $ax2, $ax2, 2
+81:	blt $br, $ax2, $ax1
+82:	lw $t0, $sp, 6
+83:	add $t0, $t0, $sp
+84:	lw $t39, $t0, 3
+85:	lw $t2, $sp, 6
+86:	add $t2, $t2, $sp
+87:	lw $t1, $t2, 0
+88:	move $r0, $t1
+89:	move $ax2, $r0
+90:	sw $t0, $zero, 1
+91:	sw $t1, $zero, 2
+92:	sw $t2, $zero, 3
+93:	sw $t3, $zero, 4
+94:	sw $t4, $zero, 5
+95:	sw $t5, $zero, 6
+96:	sw $t6, $zero, 7
+97:	sw $t7, $zero, 8
+98:	sw $t8, $zero, 9
+99:	sw $t9, $zero, 10
+100:	sw $t10, $zero, 11
+101:	sw $t11, $zero, 12
+102:	sw $t12, $zero, 13
+103:	sw $t13, $zero, 14
+104:	sw $t14, $zero, 15
+105:	sw $t15, $zero, 16
+106:	sw $t16, $zero, 17
+107:	sw $t17, $zero, 18
+108:	sw $t18, $zero, 19
+109:	sw $t19, $zero, 20
+110:	sw $t20, $zero, 21
+111:	sw $t21, $zero, 22
+112:	sw $t22, $zero, 23
+113:	sw $t23, $zero, 24
+114:	sw $t24, $zero, 25
+115:	sw $t25, $zero, 26
+116:	sw $t26, $zero, 27
+117:	sw $t27, $zero, 28
+118:	sw $t28, $zero, 29
+119:	sw $t29, $zero, 30
+120:	sw $t30, $zero, 31
+121:	sw $t31, $zero, 32
+122:	sw $t32, $zero, 33
+123:	sw $t33, $zero, 34
+124:	sw $t34, $zero, 35
+125:	sw $t35, $zero, 36
+126:	sw $t36, $zero, 37
+127:	sw $t37, $zero, 38
+128:	sw $t38, $zero, 39
+129:	sw $t39, $zero, 40
+130:	sw $r0, $zero, 41
+131:	sw $r1, $zero, 42
+132:	sw $r2, $zero, 43
+133:	sw $r3, $zero, 44
+134:	sw $r4, $zero, 45
+135:	sw $r5, $zero, 46
+136:	sw $r6, $zero, 47
+137:	sw $r7, $zero, 48
+138:	sw $r8, $zero, 49
+139:	sw $r9, $zero, 50
+140:	sw $sp, $zero, 51
+141:	sw $gp, $zero, 52
+142:	sw $jmp, $zero, 53
+143:	sw $ra, $zero, 54
+144:	sw $ret, $zero, 55
+145:	sw $br, $zero, 56
+146:	sw $ctx, $zero, 57
+147:	sw $k7, $zero, 58
+148:	sw $k8, $zero, 59
+149:	sw $k9, $zero, 60
+150:	li $ax1, 256
+151:	mul $ax1, $ax2, $ax1
+152:	lw $t0, $ax1, 1
+153:	lw $t1, $ax1, 2
+154:	lw $t2, $ax1, 3
+155:	lw $t3, $ax1, 4
+156:	lw $t4, $ax1, 5
+157:	lw $t5, $ax1, 6
+158:	lw $t6, $ax1, 7
+159:	lw $t7, $ax1, 8
+160:	lw $t8, $ax1, 9
+161:	lw $t9, $ax1, 10
+162:	lw $t10, $ax1, 11
+163:	lw $t11, $ax1, 12
+164:	lw $t12, $ax1, 13
+165:	lw $t13, $ax1, 14
+166:	lw $t14, $ax1, 15
+167:	lw $t15, $ax1, 16
+168:	lw $t16, $ax1, 17
+169:	lw $t17, $ax1, 18
+170:	lw $t18, $ax1, 19
+171:	lw $t19, $ax1, 20
+172:	lw $t20, $ax1, 21
+173:	lw $t21, $ax1, 22
+174:	lw $t22, $ax1, 23
+175:	lw $t23, $ax1, 24
+176:	lw $t24, $ax1, 25
+177:	lw $t25, $ax1, 26
+178:	lw $t26, $ax1, 27
+179:	lw $t27, $ax1, 28
+180:	lw $t28, $ax1, 29
+181:	lw $t29, $ax1, 30
+182:	lw $t30, $ax1, 31
+183:	lw $t31, $ax1, 32
+184:	lw $t32, $ax1, 33
+185:	lw $t33, $ax1, 34
+186:	lw $t34, $ax1, 35
+187:	lw $t35, $ax1, 36
+188:	lw $t36, $ax1, 37
+189:	lw $t37, $ax1, 38
+190:	lw $t38, $ax1, 39
+191:	lw $t39, $ax1, 40
+192:	lw $r0, $ax1, 41
+193:	lw $r1, $ax1, 42
+194:	lw $r2, $ax1, 43
+195:	lw $r3, $ax1, 44
+196:	lw $r4, $ax1, 45
+197:	lw $r5, $ax1, 46
+198:	lw $r6, $ax1, 47
+199:	lw $r7, $ax1, 48
+200:	lw $r8, $ax1, 49
+201:	lw $r9, $ax1, 50
+202:	lw $sp, $ax1, 51
+203:	lw $gp, $ax1, 52
+204:	lw $jmp, $ax1, 53
+205:	lw $ra, $ax1, 54
+206:	lw $ret, $ax1, 55
+207:	lw $br, $ax1, 56
+208:	lw $ctx, $ax1, 57
+209:	lw $k7, $ax1, 58
+210:	lw $k8, $ax1, 59
+211:	lw $k9, $ax1, 60
+212:	ctx $ax2
+213:	move $t3, $crt
+214:	move $t39, $t3
+215:	sw $t39, $t0, 3
+216:	lw $t4, $sp, 7
+217:	lw $t5, $sp, 7
+218:	lw $t7, $sp, 6
+219:	add $t7, $t7, $sp
+220:	lw $t6, $t7, 3
+221:	add $t8, $t5, $t6
+222:	move $t4, $t8
+223:	sw $t4, $sp, 7
+224:	j 225
+.L2
+.L3
+225:	lw $t9, $sp, 6
+226:	lw $t10, $sp, 6
+227:	li $t11, 1
+228:	add $t12, $t10, $t11
+229:	move $t9, $t12
+230:	sw $t9, $sp, 6
+231:	j 54
+.L4
+232:	j 45
+.L5
+233:	li $t13, 4095
+234:	move $r0, $t13
+235:	out $r0
+236:	nop
+237:	j 238
 .end
-717:	li $crt, 1
-718:	lw $t0, $zero, 1
-719:	lw $t1, $zero, 2
-720:	lw $t2, $zero, 3
-721:	lw $t3, $zero, 4
-722:	lw $t4, $zero, 5
-723:	lw $t5, $zero, 6
-724:	lw $t6, $zero, 7
-725:	lw $t7, $zero, 8
-726:	lw $t8, $zero, 9
-727:	lw $t9, $zero, 10
-728:	lw $t10, $zero, 11
-729:	lw $t11, $zero, 12
-730:	lw $t12, $zero, 13
-731:	lw $t13, $zero, 14
-732:	lw $t14, $zero, 15
-733:	lw $t15, $zero, 16
-734:	lw $t16, $zero, 17
-735:	lw $t17, $zero, 18
-736:	lw $t18, $zero, 19
-737:	lw $t19, $zero, 20
-738:	lw $t20, $zero, 21
-739:	lw $t21, $zero, 22
-740:	lw $t22, $zero, 23
-741:	lw $t23, $zero, 24
-742:	lw $t24, $zero, 25
-743:	lw $t25, $zero, 26
-744:	lw $t26, $zero, 27
-745:	lw $t27, $zero, 28
-746:	lw $t28, $zero, 29
-747:	lw $t29, $zero, 30
-748:	lw $t30, $zero, 31
-749:	lw $t31, $zero, 32
-750:	lw $t32, $zero, 33
-751:	lw $t33, $zero, 34
-752:	lw $t34, $zero, 35
-753:	lw $t35, $zero, 36
-754:	lw $t36, $zero, 37
-755:	lw $t37, $zero, 38
-756:	lw $t38, $zero, 39
-757:	lw $t39, $zero, 40
-758:	lw $r0, $zero, 41
-759:	lw $r1, $zero, 42
-760:	lw $r2, $zero, 43
-761:	lw $r3, $zero, 44
-762:	lw $r4, $zero, 45
-763:	lw $r5, $zero, 46
-764:	lw $r6, $zero, 47
-765:	lw $r7, $zero, 48
-766:	lw $r8, $zero, 49
-767:	lw $r9, $zero, 50
-768:	lw $sp, $zero, 51
-769:	lw $gp, $zero, 52
-770:	lw $jmp, $zero, 53
-771:	lw $ra, $zero, 54
-772:	lw $ret, $zero, 55
-773:	lw $br, $zero, 56
-774:	lw $ctx, $zero, 57
-775:	lw $k7, $zero, 58
-776:	lw $k8, $zero, 59
-777:	lw $k9, $zero, 60
-778:	lw $ax1, $zero, 61
-779:	lw $ax2, $zero, 62
-780:	ctx $zero
+238:	halt
