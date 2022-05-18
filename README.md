@@ -8,7 +8,7 @@ This repository contains most of the files that I created and/or used during my 
 
 ## License
 
-Copyright © 2017-2020 Lucas Saavedra Vaz
+Copyright © 2017-2022 Lucas Saavedra Vaz
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
