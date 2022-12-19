@@ -13,3 +13,6 @@
 [submodule "PCD"]
 	path = PCD
 	url = https://github.com/lucasssvaz/PCD.git
+[submodule "TCC_LoRa"]
+	path = TCC_LoRa
+	url = https://github.com/lucasssvaz/TCC_LoRa.git
